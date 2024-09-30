@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8i5gbndt66u2"]
+
+[ext_resource type="PackedScene" uid="uid://cjyilbm4ucc7s" path="res://addons/godot-xr-tools/objects/climbable.tscn" id="1_iu2ry"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ffin3"]
+size = Vector3(0.5, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7e73v"]
+albedo_color = Color(0.229131, 0.0852081, 0.00851168, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cql0w"]
+material = SubResource("StandardMaterial3D_7e73v")
+size = Vector3(0.5, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vl4cx"]
+size = Vector3(0.1, 2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ne5bi"]
+albedo_color = Color(0.229131, 0.0852081, 0.00851168, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uhghj"]
+material = SubResource("StandardMaterial3D_ne5bi")
+size = Vector3(0.1, 2, 0.1)
+
+[node name="RockClimbObject" instance=ExtResource("1_iu2ry")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_ffin3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_cql0w")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_ffin3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("BoxMesh_cql0w")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_ffin3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_cql0w")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("BoxShape3D_ffin3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("BoxMesh_cql0w")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_ffin3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+mesh = SubResource("BoxMesh_cql0w")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_ffin3")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_cql0w")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+shape = SubResource("BoxShape3D_ffin3")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+mesh = SubResource("BoxMesh_cql0w")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.95, 0)
+shape = SubResource("BoxShape3D_vl4cx")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.95, 0)
+mesh = SubResource("BoxMesh_uhghj")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.95, 0)
+shape = SubResource("BoxShape3D_vl4cx")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.95, 0)
+mesh = SubResource("BoxMesh_uhghj")
