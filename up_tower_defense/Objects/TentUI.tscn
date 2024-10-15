@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5moq3vwfcmrk"]
+
+[ext_resource type="Script" path="res://Objects/button.gd" id="1_8vi2j"]
+[ext_resource type="Script" path="res://Objects/tent_ui.gd" id="1_y606t"]
+
+[node name="TentUi" type="CanvasLayer"]
+scale = Vector2(10, 6.666)
+transform = Transform2D(10, 0, 0, 6.666, 0, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.035
+anchor_bottom = 0.062
+offset_right = -0.32
+offset_bottom = -0.176003
+script = ExtResource("1_y606t")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 4.855)
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("1_8vi2j")
+
+[connection signal="pressed" from="Control/VBoxContainer/Button" to="Control" method="_on_button_pressed"]

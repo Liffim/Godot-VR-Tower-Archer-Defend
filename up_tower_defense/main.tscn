@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_fr23c"]
 [ext_resource type="PackedScene" uid="uid://cw1ijop8kv4hl" path="res://rock_climb_object.tscn" id="2_c5us4"]
-[ext_resource type="PackedScene" uid="uid://hysp3fvhnhup" path="res://xr_origin.tscn" id="2_mo7en"]
+[ext_resource type="PackedScene" uid="uid://hysp3fvhnhup" path="res://XR Origin/xr_origin.tscn" id="2_mo7en"]
 [ext_resource type="PackedScene" uid="uid://dg8qjs8k0ssw7" path="res://cube.tscn" id="3_vb20x"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_12of3"]
 [ext_resource type="PackedScene" uid="uid://o2vjfoviujy2" path="res://Game_UI.tscn" id="6_nhoxo"]
@@ -14,22 +14,22 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_ivwns"]
+[sub_resource type="Sky" id="Sky_5610b"]
 sky_material = SubResource("ProceduralSkyMaterial_an3j0")
 
 [sub_resource type="Environment" id="Environment_arvrn"]
 background_mode = 2
-sky = SubResource("Sky_ivwns")
+sky = SubResource("Sky_5610b")
 tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2twee"]
 size = Vector3(5, 0.1, 5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5obug"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xlr6"]
 albedo_color = Color(0.129412, 0.47451, 0.117647, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qsnyl"]
-material = SubResource("StandardMaterial3D_5obug")
+material = SubResource("StandardMaterial3D_7xlr6")
 size = Vector3(20, 0.1, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx8bg"]
@@ -118,6 +118,7 @@ transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 1.47285, -3.55
 screen_size = Vector2(1250, 768)
 scene = ExtResource("6_nhoxo")
 viewport_size = Vector2(640, 360)
+alpha_scissor_threshold = 1.0
 unshaded = true
 
 [node name="Ladder" parent="." instance=ExtResource("7_pev3p")]

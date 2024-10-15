@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cugsw6v6khpuk"]
+
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_4x34l"]
+[ext_resource type="Script" path="res://XR Origin/ray_cast_3d_menu.gd" id="4_2cl77"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_cfrsq"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="6_xn6t6"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="7_kl0mr"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="9_hbnt3"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="10_h7njt"]
+
+[sub_resource type="Resource" id="Resource_bcdvg"]
+script = ExtResource("10_h7njt")
+flags = 0
+move_drag = 5.0
+move_traction = 30.0
+stop_on_slope = true
+move_max_slope = 45.0
+jump_max_slope = 60.0
+jump_velocity = 3.0
+bounciness = 0.0
+bounce_threshold = 1.0
+
+[node name="XROrigin3D" type="XROrigin3D"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="Left Hand" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="Left Hand" instance=ExtResource("1_4x34l")]
+
+[node name="FunctionPointer" parent="Left Hand" instance=ExtResource("5_cfrsq")]
+show_laser = 2
+laser_length = 1
+
+[node name="MovementTurn" parent="Left Hand" instance=ExtResource("7_kl0mr")]
+turn_mode = 1
+
+[node name="RayCast3D" type="RayCast3D" parent="Left Hand"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.00103033, 0)
+visible = false
+collision_mask = 2097152
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("4_2cl77")
+
+[node name="Right Hand" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="Right Hand" instance=ExtResource("6_xn6t6")]
+
+[node name="FunctionPointer" parent="Right Hand" instance=ExtResource("5_cfrsq")]
+show_laser = 2
+laser_length = 1
+
+[node name="RayCast3D" type="RayCast3D" parent="Right Hand"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+collision_mask = 2097152
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("4_2cl77")
+
+[node name="PlayerBody" parent="." instance=ExtResource("9_hbnt3")]
+physics = SubResource("Resource_bcdvg")

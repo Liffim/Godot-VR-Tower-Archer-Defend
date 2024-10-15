@@ -1,0 +1,74 @@
+[gd_scene load_steps=15 format=3 uid="uid://bgc44scj81smv"]
+
+[ext_resource type="PackedScene" uid="uid://cugsw6v6khpuk" path="res://XR Origin/xr_origin_mainMenu.tscn" id="1_o8up7"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_rwmnq"]
+[ext_resource type="PackedScene" uid="uid://slrdif6psdlp" path="res://Objects/tent_menu_last.tscn" id="3_6qhgx"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="4_olp4n"]
+[ext_resource type="PackedScene" uid="uid://b5moq3vwfcmrk" path="res://Objects/TentUI.tscn" id="5_leduv"]
+[ext_resource type="PackedScene" uid="uid://blchhtcti1jek" path="res://Objects/Campfire.tscn" id="6_0icqi"]
+[ext_resource type="PackedScene" uid="uid://buvwpip4pcfdx" path="res://Objects/Target.tscn" id="7_4ldvj"]
+[ext_resource type="PackedScene" uid="uid://c0g5566vhyejp" path="res://Objects/target_tp.tscn" id="8_0qtk0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vco31"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ivwns"]
+sky_material = SubResource("ProceduralSkyMaterial_vco31")
+
+[sub_resource type="Environment" id="Environment_be404"]
+background_mode = 2
+sky = SubResource("Sky_ivwns")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p0igd"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5obug"]
+albedo_color = Color(0.129412, 0.47451, 0.117647, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vj4n6"]
+material = SubResource("StandardMaterial3D_5obug")
+size = Vector3(20, 0.1, 20)
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_rwmnq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_be404")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.192
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_p0igd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_vj4n6")
+
+[node name="XROrigin3D" parent="." instance=ExtResource("1_o8up7")]
+
+[node name="Tent" parent="." instance=ExtResource("3_6qhgx")]
+transform = Transform3D(-0.312335, 0, -0.949972, 0, 1, 0, 0.949972, 0, -0.312335, 2.6, 0.147, -4.997)
+
+[node name="Viewport2Din3D" parent="Tent" instance=ExtResource("4_olp4n")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 1.80446, 0.853132, 0.0921516)
+scene = ExtResource("5_leduv")
+transparent = 2
+alpha_scissor_threshold = 1.0
+
+[node name="Campfire" parent="." instance=ExtResource("6_0icqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="Target" parent="." instance=ExtResource("7_4ldvj")]
+transform = Transform3D(0.576568, 0, -1.13158, 0, 1.27, 0, 1.13158, 0, 0.576568, -1.2425, 0, -3.65451)
+
+[node name="Viewport2Din3D" parent="Target" instance=ExtResource("4_olp4n")]
+transform = Transform3D(0, 0, 0.575, 0, 0.475, 0, -0.215, 0, -1.49012e-08, 0.0679281, 0.508632, 0.0346111)
+scene = ExtResource("8_0qtk0")
+transparent = 2
+alpha_scissor_threshold = 1.0

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://slrdif6psdlp"]
+
+[ext_resource type="PackedScene" uid="uid://bbnon0jf4sew6" path="res://Blend.Files/tent.glb" id="1_n0a5s"]
+[ext_resource type="Script" path="res://Blend.Files/tent_menu.gd" id="2_122o7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mil0n"]
+size = Vector3(3.04811, 2.95905, 1.94067)
+
+[node name="Tent" type="Node3D"]
+
+[node name="tent" parent="." instance=ExtResource("1_n0a5s")]
+script = ExtResource("2_122o7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tent"]
+collision_layer = 2097153
+collision_mask = 2097153
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tent/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192544, 0.979522, 0.0157471)
+shape = SubResource("BoxShape3D_mil0n")

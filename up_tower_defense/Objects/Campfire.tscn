@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://blchhtcti1jek"]
+
+[ext_resource type="PackedScene" uid="uid://uamrv60rd8ip" path="res://Blend.Files/campfire.glb" id="1_iw0km"]
+[ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="2_82ylu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lh2wf"]
+size = Vector3(0.599121, 0.490112, 0.597412)
+
+[sub_resource type="Curve" id="Curve_iqjbh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.108696, 1), 0.0, 0.0, 0, 0, Vector2(0.347826, 1), 0.0, 0.0, 0, 0, Vector2(0.355072, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_00645"]
+curve = SubResource("Curve_iqjbh")
+
+[sub_resource type="Gradient" id="Gradient_6jxon"]
+offsets = PackedFloat32Array(0, 0.309091, 0.381818, 0.481818)
+colors = PackedColorArray(1, 0.345098, 0, 1, 1, 1, 0.309804, 1, 0, 0, 0, 1, 0, 0, 0, 0.156863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c01t2"]
+gradient = SubResource("Gradient_6jxon")
+
+[sub_resource type="Curve" id="Curve_u8udg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_k4pdj"]
+curve = SubResource("Curve_u8udg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fvwfi"]
+emission_shape_scale = Vector3(1, 0.5, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+gravity = Vector3(0, 1.62, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_k4pdj")
+color_ramp = SubResource("GradientTexture1D_c01t2")
+alpha_curve = SubResource("CurveTexture_00645")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vp7e1"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_82ylu")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_h4eih"]
+material = SubResource("StandardMaterial3D_vp7e1")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="campfire" parent="." instance=ExtResource("1_iw0km")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0435396, -1.19209e-07, -0.0871663)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="campfire"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="campfire/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00854492, 0.254944, 0.0189209)
+shape = SubResource("BoxShape3D_lh2wf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="campfire"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.515148, 0)
+amount = 100
+lifetime = 2.0
+speed_scale = 0.5
+visibility_aabb = AABB(-0.1, 0.5, -0.085, 0.24, 0.5, 0.2)
+process_material = SubResource("ParticleProcessMaterial_fvwfi")
+draw_pass_1 = SubResource("QuadMesh_h4eih")

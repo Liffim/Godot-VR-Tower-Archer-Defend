@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cu34iq6vxxh7"
-path="res://.godot/imported/bow low poly final.glb-4020c40ef29daf10d08812116477a102.scn"
+uid="uid://bbnon0jf4sew6"
+path="res://.godot/imported/tent.glb-b39c46f9ed5630d3ab24309a97448bef.scn"
 
 [deps]
 
-source_file="res://bow low poly final.glb"
-dest_files=["res://.godot/imported/bow low poly final.glb-4020c40ef29daf10d08812116477a102.scn"]
+source_file="res://Blend.Files/tent.glb"
+dest_files=["res://.godot/imported/tent.glb-b39c46f9ed5630d3ab24309a97448bef.scn"]
 
 [params]
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://buvwpip4pcfdx"]
+
+[ext_resource type="PackedScene" uid="uid://c4ot6sdn0uwhf" path="res://Blend.Files/Target_last.glb" id="1_7muqm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27gon"]
+size = Vector3(0.551514, 0.985458, 0.520386)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Target_last" parent="." instance=ExtResource("1_7muqm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Target_last"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Target_last/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.224243, 0.509438, -0.00543213)
+shape = SubResource("BoxShape3D_27gon")

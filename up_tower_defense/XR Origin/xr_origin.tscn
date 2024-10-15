@@ -32,9 +32,6 @@ tracker = &"left_hand"
 
 [node name="LeftHand" parent="Left Hand" instance=ExtResource("1_fluor")]
 
-[node name="MovementDirect" parent="Left Hand" instance=ExtResource("2_eumah")]
-strafe = true
-
 [node name="FunctionPickup" parent="Left Hand" instance=ExtResource("3_36ohq")]
 
 [node name="MovementClimb" parent="Left Hand" instance=ExtResource("4_50rm0")]
@@ -43,13 +40,13 @@ strafe = true
 show_laser = 2
 laser_length = 1
 
+[node name="MovementTurn" parent="Left Hand" instance=ExtResource("4_4vubp")]
+turn_mode = 1
+
 [node name="Right Hand" type="XRController3D" parent="."]
 tracker = &"right_hand"
 
 [node name="RightHand" parent="Right Hand" instance=ExtResource("2_3xthk")]
-
-[node name="MovementTurn" parent="Right Hand" instance=ExtResource("4_4vubp")]
-turn_mode = 1
 
 [node name="FunctionPickup" parent="Right Hand" instance=ExtResource("3_36ohq")]
 
@@ -61,6 +58,9 @@ jump_button_action = "ax_button"
 [node name="FunctionPointer" parent="Right Hand" instance=ExtResource("5_juupa")]
 show_laser = 2
 laser_length = 1
+
+[node name="MovementDirect" parent="Right Hand" instance=ExtResource("2_eumah")]
+strafe = true
 
 [node name="PlayerBody" parent="." instance=ExtResource("4_6ghka")]
 physics = SubResource("Resource_bcdvg")

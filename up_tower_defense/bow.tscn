@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bs4io82xciw20"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_np68p"]
-[ext_resource type="PackedScene" uid="uid://cu34iq6vxxh7" path="res://bow low poly final.glb" id="2_4tuyt"]
+[ext_resource type="PackedScene" uid="uid://cu34iq6vxxh7" path="res://Blend.Files/bow low poly final.glb" id="2_4tuyt"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_h7dir"]
 [ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="3_uubmp"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_jep0y"]

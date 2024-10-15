@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0g5566vhyejp"]
+
+[ext_resource type="Script" path="res://target_tp.gd" id="1_vx8ds"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.469
+anchor_bottom = 0.444
+offset_right = -0.288025
+offset_bottom = 0.287964
+script = ExtResource("1_vx8ds")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 288.0
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
