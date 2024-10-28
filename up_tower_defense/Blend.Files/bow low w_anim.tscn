@@ -1,24 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bs4io82xciw20"]
-
-[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_np68p"]
-[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_h7dir"]
-[ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="3_uubmp"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_jep0y"]
-[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_g1hlm"]
-[ext_resource type="Animation" uid="uid://ccds2u22gbxn7" path="res://addons/godot-xr-tools/hands/animations/right/Grip.res" id="6_yeucs"]
-[ext_resource type="PackedScene" uid="uid://ny6j5skbytfr" path="res://Blend.Files/bow low w_anim.tscn" id="7_bqjmw"]
-[ext_resource type="Script" path="res://Blend.Files/BowShooting.gd" id="8_iln2q"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7tgwf"]
-size = Vector3(0.1, 0.3, 0.2)
-
-[sub_resource type="Resource" id="Resource_sjsxc"]
-script = ExtResource("4_jep0y")
-closed_pose = ExtResource("3_uubmp")
-
-[sub_resource type="Resource" id="Resource_6a235"]
-script = ExtResource("4_jep0y")
-closed_pose = ExtResource("6_yeucs")
+[gd_scene load_steps=7 format=4 uid="uid://ny6j5skbytfr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w70jj"]
 resource_name = "Bow Body"
@@ -32,7 +12,7 @@ cull_mode = 2
 albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
 roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_1267b"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ecrn5"]
 resource_name = "bow low w_anims_Cylinder_001"
 _surfaces = [{
 "aabb": AABB(-0.0598291, -0.70293, -0.0308571, 0.374143, 1.40586, 0.0617142),
@@ -67,7 +47,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Skin" id="Skin_2gt7c"]
+[sub_resource type="Skin" id="Skin_pi6jb"]
 resource_name = "Skin"
 bind_count = 32
 bind/0/name = &"Main"
@@ -400,34 +380,13 @@ _data = {
 "ArmatureAction": SubResource("Animation_r6awu")
 }
 
-[node name="PickableObject" type="RigidBody3D"]
-collision_layer = 4
-collision_mask = 196615
-freeze_mode = 1
-script = ExtResource("1_np68p")
-second_hand_grab = 2
+[node name="bow low w_anims" type="Node3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00923903)
-shape = SubResource("BoxShape3D_7tgwf")
-
-[node name="GrabPointHandLeft" parent="." instance=ExtResource("2_h7dir")]
-transform = Transform3D(-0.0434276, 0.229952, 0.972233, 0, 0.973151, -0.230169, -0.999057, -0.00999568, -0.0422616, -0.0695516, 0.0205519, -0.0153014)
-visible = true
-hand_pose = SubResource("Resource_sjsxc")
-
-[node name="GrabPointHandRight2" parent="." instance=ExtResource("5_g1hlm")]
-transform = Transform3D(-0.0226963, 0.0435036, 0.998796, -0.00768184, 0.999015, -0.0436876, -0.999713, -0.00866416, -0.0223398, 0.154188, 0.0205519, 0.0214179)
-visible = true
-hand_pose = SubResource("Resource_6a235")
-
-[node name="bow low w_anims" parent="." instance=ExtResource("7_bqjmw")]
-script = ExtResource("8_iln2q")
-
-[node name="Armature2" type="Node3D" parent="bow low w_anims"]
+[node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(0, 0, 0.0773649, 0, 0.0773649, 0, -0.0773649, 0, 0, 0, 0, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="bow low w_anims/Armature2"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
 bones/0/name = "Main"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 2.38419e-07, -2.38416e-07, -0.00463843, 0.999989, 1.10588e-09, -0.999989, -0.00463843, 0, 0, 0)
@@ -653,20 +612,15 @@ bones/31/position = Vector3(4.39848e-09, -3.97737, -0.0184486)
 bones/31/rotation = Quaternion(0.999986, 6.20899e-10, 1.19208e-07, -0.0052085)
 bones/31/scale = Vector3(1, 1, 1)
 
-[node name="Bow" type="MeshInstance3D" parent="bow low w_anims/Armature2/Skeleton3D"]
-mesh = SubResource("ArrayMesh_1267b")
-skin = SubResource("Skin_2gt7c")
+[node name="Bow" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+mesh = SubResource("ArrayMesh_ecrn5")
+skin = SubResource("Skin_pi6jb")
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="bow low w_anims"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_cqdfd")
 }
 
-[node name="ArrowAttachPosition2" type="Node3D" parent="bow low w_anims"]
+[node name="ArrowAttachPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305116, 0, 0)
-
-[connection signal="grabbed" from="." to="." method="_on_grabbed"]
-[connection signal="grabbed" from="." to="bow low w_anims" method="_on_pickable_object_grabbed"]
-[connection signal="released" from="." to="." method="_on_released"]
-[connection signal="released" from="." to="bow low w_anims" method="_on_pickable_object_released"]

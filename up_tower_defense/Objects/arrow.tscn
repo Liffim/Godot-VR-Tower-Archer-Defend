@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cecb51wl8ykub"]
+
+[ext_resource type="PackedScene" uid="uid://dudqbhpj60pvx" path="res://Blend.Files/arrow.glb" id="1_opyb4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfpdk"]
+size = Vector3(0.37207, 0.37854, 4.06226)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="arrow" parent="." instance=ExtResource("1_opyb4")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="arrow"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arrow/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0288086, -0.0128784, -0.357788)
+shape = SubResource("BoxShape3D_wfpdk")
