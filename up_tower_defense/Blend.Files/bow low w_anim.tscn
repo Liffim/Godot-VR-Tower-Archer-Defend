@@ -617,10 +617,9 @@ mesh = SubResource("ArrayMesh_ecrn5")
 skin = SubResource("Skin_pi6jb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_cqdfd")
 }
 
 [node name="ArrowAttachPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305116, 0, 0)
+transform = Transform3D(0.0128452, 0, 0.999918, 0, 1, 0, -0.999918, 0, 0.0128452, 0.305116, 0, -0.0194779)
