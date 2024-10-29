@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3ef22bh8ilv8"]
+
+[ext_resource type="Script" path="res://target_moving.gd" id="1_cx0y6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uvfxl"]
+font_size = 72
+
+[node name="Target Moving" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cx0y6")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 300.0
+offset_right = 939.0
+offset_bottom = 439.0
+theme_override_font_sizes/font_size = 80
+text = "+"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 300.0
+offset_right = 339.0
+offset_bottom = 439.0
+theme_override_font_sizes/font_size = 80
+text = "–"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 83.0
+offset_right = 938.0
+offset_bottom = 224.0
+text = "Target distance"
+label_settings = SubResource("LabelSettings_uvfxl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Label"]
+offset_left = 4.0
+offset_top = 216.0
+offset_right = 742.0
+offset_bottom = 357.0
+text = "2 m"
+label_settings = SubResource("LabelSettings_uvfxl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_minus_pressed"]

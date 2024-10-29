@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ud78ce4v4axw"]
+
+[ext_resource type="Script" path="res://tooltip.gd" id="1_dkwmh"]
+
+[node name="Tooltip" type="Node3D"]
+script = ExtResource("1_dkwmh")
+
+[node name="Text" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+text = "Lorem ipsum"
