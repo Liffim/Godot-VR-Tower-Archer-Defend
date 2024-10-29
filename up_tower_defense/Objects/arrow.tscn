@@ -1,19 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://cecb51wl8ykub"]
+[gd_scene load_steps=5 format=3 uid="uid://cecb51wl8ykub"]
 
+[ext_resource type="Script" path="res://Objects/arrow.gd" id="1_dlawf"]
 [ext_resource type="PackedScene" uid="uid://dudqbhpj60pvx" path="res://Blend.Files/arrow.glb" id="1_opyb4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wfpdk"]
-size = Vector3(0.37207, 0.37854, 4.50086)
+size = Vector3(0.37207, 0.37854, 4.28168)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3egfl"]
+size = Vector3(0.0195313, 0.0214844, 0.00805664)
 
 [node name="RigidBody3D" type="RigidBody3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_layer = 1024
 collision_mask = 1024
 mass = 0.5
+script = ExtResource("1_dlawf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.1, 0, 6.98492e-10, 0, 0.1, 0, -6.98492e-10, 0, 0.1, -0.00315759, 0.00247354, -0.0165274)
+transform = Transform3D(0.1, 0, 6.98492e-10, 0, 0.1, 0, -6.98492e-10, 0, 0.1, -0.00315759, 0.00247354, -0.00556839)
 shape = SubResource("BoxShape3D_wfpdk")
 
 [node name="arrow" parent="." instance=ExtResource("1_opyb4")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000260383, 0.000588812, -0.226477)
+shape = SubResource("BoxShape3D_3egfl")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

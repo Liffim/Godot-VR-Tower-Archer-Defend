@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://krnnqhlrsakq"]
+[gd_scene load_steps=19 format=3 uid="uid://krnnqhlrsakq"]
 
 [ext_resource type="Script" path="res://practice.gd" id="1_m2io1"]
 [ext_resource type="PackedScene" uid="uid://hysp3fvhnhup" path="res://XR Origin/xr_origin.tscn" id="3_rjpk7"]
 [ext_resource type="PackedScene" uid="uid://iu2tlgiigbrk" path="res://fence.tscn" id="4_wcdos"]
+[ext_resource type="Script" path="res://practice_target.gd" id="5_asj8p"]
 [ext_resource type="PackedScene" uid="uid://c4ot6sdn0uwhf" path="res://Blend.Files/Target_last.glb" id="5_kr55u"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_wggec"]
 [ext_resource type="PackedScene" uid="uid://c3ef22bh8ilv8" path="res://target_moving.tscn" id="7_86by0"]
+[ext_resource type="PackedScene" uid="uid://f7btj46o4pfm" path="res://tower temp.tscn" id="8_qo6m6"]
 [ext_resource type="PackedScene" uid="uid://bs4io82xciw20" path="res://bow.tscn" id="9_wy624"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_an3j0"]
@@ -33,7 +35,7 @@ size = Vector3(20, 0.1, 20)
 size = Vector3(0.242279, 0.724052, 0.520386)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fv12f"]
-height = 0.040288
+height = 0.031714
 radius = 0.248406
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_likeb"]
@@ -55,23 +57,20 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.217
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_2twee")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" groups=["arrow_collision"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.49614, 0, 0, -23)
 mesh = SubResource("BoxMesh_qsnyl")
 
 [node name="XROrigin3D" parent="." instance=ExtResource("3_rjpk7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.83572)
 
-[node name="PickableObject2" parent="." instance=ExtResource("9_wy624")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.184899, 1.36276, 9.07628)
-
-[node name="Fence" parent="." instance=ExtResource("4_wcdos")]
+[node name="Fence" parent="." groups=["arrow_collision"] instance=ExtResource("4_wcdos")]
 transform = Transform3D(1.2, 0, 3.55271e-15, 0, 1.2, 0, -3.55271e-15, 0, 1.2, -1.21772, 0, 9.50552)
 
-[node name="Fence2" parent="." instance=ExtResource("4_wcdos")]
+[node name="Fence2" parent="." groups=["arrow_collision"] instance=ExtResource("4_wcdos")]
 transform = Transform3D(1.2, 0, 3.55271e-15, 0, 1.2, 0, -3.55271e-15, 0, 1.2, -1.21772, 0, 8.50552)
 
-[node name="Fence3" parent="." instance=ExtResource("4_wcdos")]
+[node name="Fence3" parent="." groups=["arrow_collision"] instance=ExtResource("4_wcdos")]
 transform = Transform3D(1.2, 0, 3.55271e-15, 0, 1.2, 0, -3.55271e-15, 0, 1.2, -1.21772, 0, 7.50552)
 
 [node name="Target" type="Node3D" parent="."]
@@ -79,14 +78,17 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.21772, 0, 8.50552)
 
 [node name="Target_last" parent="Target" instance=ExtResource("5_kr55u")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Target/Target_last"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Target/Target_last" groups=["arrow_collision"]]
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource("5_asj8p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Target/Target_last/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.139145, 0.378735, -0.00543213)
 shape = SubResource("BoxShape3D_27gon")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Target/Target_last/StaticBody3D"]
-transform = Transform3D(0.07564, 0.997135, 0, -0.997135, 0.07564, 0, 0, 0, 1, 0.0143554, 0.750686, 0)
+transform = Transform3D(0.0763361, 0.997082, 0, -0.997082, 0.0763361, 0, 0, 0, 1, 0.00929642, 0.749284, 0)
 shape = SubResource("CylinderShape3D_fv12f")
 
 [node name="Viewport2Din3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_wggec")]
@@ -96,3 +98,9 @@ viewport_size = Vector2(1150, 650)
 material = SubResource("StandardMaterial3D_likeb")
 scene_properties_keys = PackedStringArray("target_moving.gd", "target")
 target = NodePath("../Target")
+
+[node name="PickableObject2" parent="." instance=ExtResource("9_wy624")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.570762, 1.36276, 7.80888)
+
+[node name="towerBodyMesh" parent="." groups=["arrow_collision"] instance=ExtResource("8_qo6m6")]
+transform = Transform3D(0.359936, 0, 0, 0, 1, 0, 0, 0, 0.267638, -0.41933, -2.37059, 7.79527)

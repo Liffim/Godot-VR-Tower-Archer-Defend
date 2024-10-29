@@ -4,7 +4,7 @@ var ArrowScene = load("res://Objects/arrow.tscn") as PackedScene
 
 var arrow_instance: RigidBody3D = null
 var draw_strength: float = 0.0
-var max_draw_strength: float = 30.0
+var max_draw_strength: float = 15.0
 var is_drawing: bool = false
 var left_hand_grabbed: bool = false
 var right_hand_grabbed: bool = false

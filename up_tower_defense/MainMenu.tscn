@@ -85,7 +85,6 @@ transform = Transform3D(-0.716497, 0, -0.69759, 0, 1, 0, 0.69759, 0, -0.716497, 
 
 [node name="Viewport2Din3D" parent="Tent" instance=ExtResource("4_olp4n")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 1.80446, 0.853132, 0.0921516)
-scene = ExtResource("5_leduv")
 transparent = 2
 alpha_scissor_threshold = 1.0
 
@@ -134,6 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.61719)
 
 [node name="Viewport2Din3D" parent="Exit" instance=ExtResource("4_olp4n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.665455, -0.141062)
+scene = ExtResource("5_leduv")
 
 [node name="Tooltip" parent="Exit/Viewport2Din3D" instance=ExtResource("9_ll0nv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26899, 3.61719)
