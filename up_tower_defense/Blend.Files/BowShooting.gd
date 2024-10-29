@@ -33,7 +33,7 @@ func _process(delta):
 		var draw_percentage = current_time / animation_length
 		draw_percentage = clamp(draw_percentage, 0.0, 1.0)
 
-		var max_displacement = 0.5
+		var max_displacement = 0.35
 		var displacement = max_displacement * draw_percentage
 
 		var attach_local_transform = arrow_attach_position.transform
