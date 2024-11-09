@@ -16,4 +16,4 @@ func _on_button_pressed() -> void:
 	print("Button pressed, attempting to change scene.")
 	print("Button pressed, switching scenes...")
 	# Directly change the scene to your main scene
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://practice.tscn")

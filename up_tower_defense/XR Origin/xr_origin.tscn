@@ -41,7 +41,7 @@ show_laser = 2
 laser_length = 1
 
 [node name="MovementTurn" parent="Left Hand" instance=ExtResource("4_4vubp")]
-turn_mode = 1
+turn_mode = 2
 
 [node name="Right Hand" type="XRController3D" parent="."]
 tracker = &"right_hand"

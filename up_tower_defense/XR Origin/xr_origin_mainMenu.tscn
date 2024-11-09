@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cugsw6v6khpuk"]
+[gd_scene load_steps=10 format=3 uid="uid://cugsw6v6khpuk"]
 
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_4x34l"]
 [ext_resource type="Script" path="res://XR Origin/ray_cast_3d_menu.gd" id="4_2cl77"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_cfrsq"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="6_kio7l"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="6_xn6t6"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="7_kl0mr"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="9_hbnt3"]
@@ -34,7 +35,7 @@ show_laser = 2
 laser_length = 1
 
 [node name="MovementTurn" parent="Left Hand" instance=ExtResource("7_kl0mr")]
-turn_mode = 1
+turn_mode = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="Left Hand"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.00103033, 0)
@@ -60,6 +61,9 @@ collision_mask = 2097152
 hit_from_inside = true
 collide_with_areas = true
 script = ExtResource("4_2cl77")
+
+[node name="MovementDirect" parent="Right Hand" instance=ExtResource("6_kio7l")]
+strafe = true
 
 [node name="PlayerBody" parent="." instance=ExtResource("9_hbnt3")]
 physics = SubResource("Resource_bcdvg")
