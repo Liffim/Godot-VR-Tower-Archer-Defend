@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://hysp3fvhnhup" path="res://XR Origin/xr_origin.tscn" id="3_rjpk7"]
 [ext_resource type="PackedScene" uid="uid://iu2tlgiigbrk" path="res://fence.tscn" id="4_wcdos"]
 [ext_resource type="Script" path="res://practice_target.gd" id="5_asj8p"]
-[ext_resource type="PackedScene" uid="uid://c4ot6sdn0uwhf" path="res://Blend.Files/Target_last.glb" id="5_kr55u"]
+[ext_resource type="PackedScene" uid="uid://c4ot6sdn0uwhf" path="res://Blend.Files/RandomObjects/Target_last.glb" id="5_kr55u"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_wggec"]
 [ext_resource type="PackedScene" uid="uid://c3ef22bh8ilv8" path="res://target_moving.tscn" id="7_86by0"]
 [ext_resource type="PackedScene" uid="uid://f7btj46o4pfm" path="res://tower temp.tscn" id="8_qo6m6"]

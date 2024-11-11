@@ -19,12 +19,12 @@ ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 ground_curve = 0.422243
 
-[sub_resource type="Sky" id="Sky_18tdg"]
+[sub_resource type="Sky" id="Sky_vafjt"]
 sky_material = SubResource("ProceduralSkyMaterial_nnb03")
 
 [sub_resource type="Environment" id="Environment_be404"]
 background_mode = 1
-sky = SubResource("Sky_18tdg")
+sky = SubResource("Sky_vafjt")
 tonemap_mode = 2
 fog_light_color = Color(0, 0, 0, 1)
 

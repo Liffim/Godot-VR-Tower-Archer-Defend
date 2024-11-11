@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://blchhtcti1jek"]
 
-[ext_resource type="PackedScene" uid="uid://uamrv60rd8ip" path="res://Blend.Files/campfire.glb" id="1_iw0km"]
+[ext_resource type="PackedScene" uid="uid://uamrv60rd8ip" path="res://Blend.Files/RandomObjects/campfire.glb" id="1_iw0km"]
 [ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="2_82ylu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lh2wf"]

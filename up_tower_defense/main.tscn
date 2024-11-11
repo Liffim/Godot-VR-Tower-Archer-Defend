@@ -13,12 +13,12 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_an3j0"]
 sky_top_color = Color(1.92523e-06, 0.482964, 0.68983, 1)
 
-[sub_resource type="Sky" id="Sky_5610b"]
+[sub_resource type="Sky" id="Sky_rxitb"]
 sky_material = SubResource("ProceduralSkyMaterial_an3j0")
 
 [sub_resource type="Environment" id="Environment_arvrn"]
 background_mode = 2
-sky = SubResource("Sky_5610b")
+sky = SubResource("Sky_rxitb")
 tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2twee"]
@@ -53,6 +53,8 @@ environment = SubResource("Environment_arvrn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.288518, 0.288518, 0.288518, 1)
+light_energy = 0.354
 shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

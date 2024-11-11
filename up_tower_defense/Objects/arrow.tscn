@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cecb51wl8ykub"]
 
 [ext_resource type="Script" path="res://Objects/arrow.gd" id="1_dlawf"]
-[ext_resource type="PackedScene" uid="uid://dudqbhpj60pvx" path="res://Blend.Files/arrow.glb" id="1_opyb4"]
+[ext_resource type="PackedScene" uid="uid://dudqbhpj60pvx" path="res://Blend.Files/Bow/arrow.glb" id="1_opyb4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wfpdk"]
 size = Vector3(0.37207, 0.37854, 4.28168)

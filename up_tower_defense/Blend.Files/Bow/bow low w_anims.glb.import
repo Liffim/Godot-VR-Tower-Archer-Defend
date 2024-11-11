@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://uamrv60rd8ip"
-path="res://.godot/imported/campfire.glb-de7e20f16d42e62f7198ad1ab9c8b5dc.scn"
+uid="uid://cnt16vddnb5m5"
+path="res://.godot/imported/bow low w_anims.glb-f7bad43495e47d61e6bcf5cf193b8713.scn"
 
 [deps]
 
-source_file="res://Blend.Files/campfire.glb"
-dest_files=["res://.godot/imported/campfire.glb-de7e20f16d42e62f7198ad1ab9c8b5dc.scn"]
+source_file="res://Blend.Files/Bow/bow low w_anims.glb"
+dest_files=["res://.godot/imported/bow low w_anims.glb-f7bad43495e47d61e6bcf5cf193b8713.scn"]
 
 [params]
 

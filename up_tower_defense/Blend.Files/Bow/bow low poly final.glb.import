@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cu34iq6vxxh7"
-path="res://.godot/imported/bow low poly final.glb-271e68d5b612e5dc20acd87695490da1.scn"
+path="res://.godot/imported/bow low poly final.glb-80dc6cc6d05341ce3d74daab652849f9.scn"
 
 [deps]
 
-source_file="res://Blend.Files/bow low poly final.glb"
-dest_files=["res://.godot/imported/bow low poly final.glb-271e68d5b612e5dc20acd87695490da1.scn"]
+source_file="res://Blend.Files/Bow/bow low poly final.glb"
+dest_files=["res://.godot/imported/bow low poly final.glb-80dc6cc6d05341ce3d74daab652849f9.scn"]
 
 [params]
 

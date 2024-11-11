@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://buvwpip4pcfdx"]
 
-[ext_resource type="PackedScene" uid="uid://c4ot6sdn0uwhf" path="res://Blend.Files/Target_last.glb" id="1_7muqm"]
+[ext_resource type="PackedScene" uid="uid://c4ot6sdn0uwhf" path="res://Blend.Files/RandomObjects/Target_last.glb" id="1_7muqm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_27gon"]
 size = Vector3(0.551514, 0.985458, 0.520386)
