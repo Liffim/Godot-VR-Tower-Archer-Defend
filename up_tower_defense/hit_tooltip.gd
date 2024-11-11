@@ -8,10 +8,13 @@ func go_up():
 	create_tween().tween_property(self, "position", position + Vector3(0, 0.6, 0), 2)
 
 func _process(delta: float) -> void:
-	look_at($"../../../../XROrigin3D".position)
+	look_at(CharacterGlobal.player_position)
 
 func set_text(text):
 	label.text = str(text)
+	
+func set_size(size):
+	label.font_size *= size
 	
 func set_color(color):
 	if(color == "yellow"):
