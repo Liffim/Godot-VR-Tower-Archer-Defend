@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://blwbu7p5b0kwc"]
+[gd_scene load_steps=21 format=3 uid="uid://blwbu7p5b0kwc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_5bor6"]
 [ext_resource type="PackedScene" uid="uid://dfj84l6l2jptm" path="res://Blend.Files/Map/GrassLand.glb" id="1_urkk6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqail78ca73vi" path="res://Blend.Files/Map/water.glb" id="4_3kxkm"]
 [ext_resource type="PackedScene" uid="uid://c0rng6sbs22sv" path="res://Blend.Files/Map/Mountain.glb" id="5_fmsc1"]
 [ext_resource type="PackedScene" uid="uid://f07sfrf5ps8x" path="res://Blend.Files/Map Details/Tree1.glb" id="6_7ej4c"]
+[ext_resource type="Shader" path="res://stylized_sky.gdshader" id="6_s0wmq"]
 [ext_resource type="PackedScene" uid="uid://dayendo1et5oh" path="res://Blend.Files/Map Details/Bush.glb" id="7_ktqos"]
 [ext_resource type="PackedScene" uid="uid://q6dlah47wyas" path="res://Blend.Files/Map Details/Rock1.glb" id="8_s0vx5"]
 [ext_resource type="PackedScene" uid="uid://cj80pjqni60j7" path="res://Blend.Files/Map Details/Rock2.glb" id="9_6vnxm"]
@@ -15,23 +16,49 @@
 [ext_resource type="PackedScene" uid="uid://b8i5gbndt66u2" path="res://ladder_step.tscn" id="13_e8kcp"]
 [ext_resource type="PackedScene" uid="uid://f7btj46o4pfm" path="res://tower temp.tscn" id="14_t8env"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gbxp6"]
-sky_top_color = Color(7.83163e-05, 0.00011725, 0.000187191, 1)
-sky_horizon_color = Color(0, 0, 0, 1)
-sky_curve = 1.81886
-sky_cover_modulate = Color(0, 0, 0, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
-ground_curve = 0.422243
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1baft"]
 
-[sub_resource type="Sky" id="Sky_l1wvf"]
-sky_material = SubResource("ProceduralSkyMaterial_gbxp6")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1fqcg"]
+seamless = true
+noise = SubResource("FastNoiseLite_1baft")
 
-[sub_resource type="Environment" id="Environment_uc5ku"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nusr5"]
+shader = ExtResource("6_s0wmq")
+shader_parameter/clouds_samples = 32
+shader_parameter/shadow_sample = 4
+shader_parameter/clouds_density = 0.4
+shader_parameter/clouds_scale = 1.0
+shader_parameter/clouds_smoothness = 0.03
+shader_parameter/clouds_light_color = Color(0.92, 0.92, 0.92, 1)
+shader_parameter/clouds_shadow_intensity = 1.0
+shader_parameter/cloud_shape_sampler = SubResource("NoiseTexture2D_1fqcg")
+shader_parameter/high_clouds_density = 0.0
+shader_parameter/top_color = Color(0.34902, 0.588235, 1, 1)
+shader_parameter/bottom_color = Color(0, 0.329412, 0.968627, 1)
+shader_parameter/sun_scatter = Color(0.298039, 0.298039, 0.298039, 1)
+shader_parameter/astro_tint = null
+shader_parameter/astro_scale = 1.0
+shader_parameter/astro_intensity = 1.0
+shader_parameter/stars_intensity = 0.0
+shader_parameter/shooting_stars_intensity = 0.0
+shader_parameter/shooting_star_tint = null
+
+[sub_resource type="Sky" id="Sky_rlcwe"]
+sky_material = SubResource("ShaderMaterial_nusr5")
+
+[sub_resource type="Environment" id="Environment_sc1ku"]
 background_mode = 1
-sky = SubResource("Sky_l1wvf")
-tonemap_mode = 2
+background_color = Color(0.241156, 0.241156, 0.241156, 1)
+background_energy_multiplier = 0.21
+sky = SubResource("Sky_rlcwe")
+ambient_light_energy = 1.4
+tonemap_mode = 1
+tonemap_exposure = 0.6
+tonemap_white = 0.5
+fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
+fog_sky_affect = 0.0
+volumetric_fog_density = 0.4075
 
 [node name="MainPlayMap" type="Node3D"]
 script = ExtResource("1_5bor6")
@@ -49,12 +76,14 @@ transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -39.4264)
 
 [node name="Mountain2" parent="MainMapObjects" instance=ExtResource("5_fmsc1")]
 
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="MainMapObjects"]
-environment = SubResource("Environment_uc5ku")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainMapObjects"]
+environment = SubResource("Environment_sc1ku")
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="MainMapObjects"]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_color = Color(0.28485, 0.28485, 0.28485, 1)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MainMapObjects"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 24.0512, -19.5782)
+light_color = Color(0.544975, 0.544974, 0.544974, 1)
+light_energy = 0.5
+shadow_enabled = true
 
 [node name="MapObjects" type="Node" parent="."]
 
