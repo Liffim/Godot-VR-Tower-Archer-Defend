@@ -1,9 +1,16 @@
 extends CharacterBody3D
 
-@onready var mesh : MeshInstance3D = $CharacterBody3D/MeshInstance3D
+@onready var mesh : MeshInstance3D
 
 var speed = 1.3
 var health = 20
+
+var material : Material
+
+func _ready() -> void:
+	mesh = $MeshInstance3D
+	material = mesh.mesh.surface_get_material(0).duplicate()
+	mesh.set_surface_override_material(0, material)
 
 func _process(delta: float) -> void:
 	if health <= 0:
@@ -17,6 +24,8 @@ func _physics_process(delta: float) -> void:
 
 func hit_calc(position:Vector3):
 	var dmg = randi_range(6, 12)
+	await create_tween().tween_property(material, "albedo_color", Color.WHITE, 0.04).finished
+	create_tween().tween_property(material, "albedo_color", Color("890000"), 0.6)
 	health -= dmg
 	display_text(dmg, global_position)
 

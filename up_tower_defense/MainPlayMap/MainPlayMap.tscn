@@ -68,15 +68,15 @@ script = ExtResource("1_5bor6")
 [node name="XROrigin3D" parent="." instance=ExtResource("2_otck3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3001, 0)
 
-[node name="MainMapObjects" type="Node" parent="."]
+[node name="MainMapObjects" type="Node" parent="." groups=["arrow_collision"]]
 
-[node name="GrassLand" parent="MainMapObjects" instance=ExtResource("1_urkk6")]
+[node name="GrassLand" parent="MainMapObjects" groups=["arrow_collision"] instance=ExtResource("1_urkk6")]
 transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="water" parent="MainMapObjects" instance=ExtResource("4_3kxkm")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -39.4264)
 
-[node name="Mountain2" parent="MainMapObjects" instance=ExtResource("5_fmsc1")]
+[node name="Mountain2" parent="MainMapObjects" groups=["arrow_collision"] instance=ExtResource("5_fmsc1")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="MainMapObjects"]
 environment = SubResource("Environment_sc1ku")
@@ -429,3 +429,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4901, 1.5, 31.1906)
 
 [node name="SpawnPoint4" parent="." instance=ExtResource("17_13gvd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4831, 1.5, 48.4754)
+
+[node name="PickableObject3" parent="." instance=ExtResource("17_f0wtn")]
+transform = Transform3D(-0.105049, 0, 0.994467, 0, 1, 0, -0.994467, 0, -0.105049, -1.36034, 2.87323, -1.27281)
+gravity_scale = 0.0

@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bs4io82xciw20"]
+[gd_scene load_steps=10 format=3 uid="uid://bs4io82xciw20"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_np68p"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_h7dir"]
-[ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="3_uubmp"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_jep0y"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_g1hlm"]
 [ext_resource type="Animation" uid="uid://ccds2u22gbxn7" path="res://addons/godot-xr-tools/hands/animations/right/Grip.res" id="6_yeucs"]
@@ -11,10 +10,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7tgwf"]
 size = Vector3(0.1, 0.3, 0.2)
-
-[sub_resource type="Resource" id="Resource_sjsxc"]
-script = ExtResource("4_jep0y")
-closed_pose = ExtResource("3_uubmp")
 
 [sub_resource type="Resource" id="Resource_6a235"]
 script = ExtResource("4_jep0y")
@@ -25,6 +20,7 @@ collision_layer = 4
 collision_mask = 196615
 freeze_mode = 1
 script = ExtResource("1_np68p")
+ranged_grab_method = 2
 second_hand_grab = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -34,12 +30,15 @@ shape = SubResource("BoxShape3D_7tgwf")
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("2_h7dir")]
 transform = Transform3D(-0.0434276, 0.229952, 0.972233, 0, 0.973151, -0.230169, -0.999057, -0.00999568, -0.0422616, -0.0695516, 0.0205519, -0.0153014)
 visible = true
-hand_pose = SubResource("Resource_sjsxc")
+mode = 1
 
 [node name="GrabPointHandRight2" parent="." instance=ExtResource("5_g1hlm")]
-transform = Transform3D(-0.0226963, 0.0435036, 0.998796, -0.00768184, 0.999015, -0.0436876, -0.999713, -0.00866416, -0.0223398, 0.154188, 0.0205519, 0.0214179)
+transform = Transform3D(-0.0226963, 0.0435036, 0.998796, -0.00768184, 0.999015, -0.0436876, -0.999713, -0.00866416, -0.0223398, 0.154188, 0.0205519, 0.0305054)
 visible = true
 hand_pose = SubResource("Resource_6a235")
+drive_position = 0.0
+drive_angle = 0.0
+drive_aim = 1.0
 
 [node name="bow low w_anims" parent="." instance=ExtResource("7_bqjmw")]
 script = ExtResource("8_iln2q")

@@ -1,4 +1,4 @@
-[gd_resource type="OpenXRActionMap" load_steps=221 format=3 uid="uid://bhurpebqpvwjn"]
+[gd_resource type="OpenXRActionMap" load_steps=222 format=3 uid="uid://bhurpebqpvwjn"]
 
 [sub_resource type="OpenXRAction" id="OpenXRAction_5q8u5"]
 resource_name = "trigger"
@@ -924,6 +924,9 @@ paths = PackedStringArray("/user/hand/left/input/grasp_ext/ready_ext", "/user/ha
 interaction_profile_path = "/interaction_profiles/ext/hand_interaction_ext"
 bindings = [SubResource("OpenXRIPBinding_3vmdw"), SubResource("OpenXRIPBinding_4fp6k"), SubResource("OpenXRIPBinding_vptvy"), SubResource("OpenXRIPBinding_tplsc"), SubResource("OpenXRIPBinding_5jki4"), SubResource("OpenXRIPBinding_mem0u"), SubResource("OpenXRIPBinding_wfj08"), SubResource("OpenXRIPBinding_5dh0s"), SubResource("OpenXRIPBinding_73q1a"), SubResource("OpenXRIPBinding_kqoeg")]
 
+[sub_resource type="OpenXRInteractionProfile" id="OpenXRInteractionProfile_0qacy"]
+interaction_profile_path = "/interaction_profiles/bytedance/pico_neo3_controller"
+
 [resource]
 action_sets = [SubResource("OpenXRActionSet_fanb1")]
-interaction_profiles = [SubResource("OpenXRInteractionProfile_m1bjs"), SubResource("OpenXRInteractionProfile_tt5m1"), SubResource("OpenXRInteractionProfile_3wgs4"), SubResource("OpenXRInteractionProfile_a0wxj"), SubResource("OpenXRInteractionProfile_fojoy"), SubResource("OpenXRInteractionProfile_0c0et"), SubResource("OpenXRInteractionProfile_6g17e"), SubResource("OpenXRInteractionProfile_tyot5"), SubResource("OpenXRInteractionProfile_dmmho"), SubResource("OpenXRInteractionProfile_l4kqy"), SubResource("OpenXRInteractionProfile_28wlf"), SubResource("OpenXRInteractionProfile_ypbfe"), SubResource("OpenXRInteractionProfile_o3lv2"), SubResource("OpenXRInteractionProfile_h0ist")]
+interaction_profiles = [SubResource("OpenXRInteractionProfile_m1bjs"), SubResource("OpenXRInteractionProfile_tt5m1"), SubResource("OpenXRInteractionProfile_3wgs4"), SubResource("OpenXRInteractionProfile_a0wxj"), SubResource("OpenXRInteractionProfile_fojoy"), SubResource("OpenXRInteractionProfile_0c0et"), SubResource("OpenXRInteractionProfile_6g17e"), SubResource("OpenXRInteractionProfile_tyot5"), SubResource("OpenXRInteractionProfile_dmmho"), SubResource("OpenXRInteractionProfile_l4kqy"), SubResource("OpenXRInteractionProfile_28wlf"), SubResource("OpenXRInteractionProfile_ypbfe"), SubResource("OpenXRInteractionProfile_o3lv2"), SubResource("OpenXRInteractionProfile_h0ist"), SubResource("OpenXRInteractionProfile_0qacy")]

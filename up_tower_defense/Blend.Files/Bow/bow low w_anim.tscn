@@ -405,7 +405,7 @@ bones/2/name = "Bone.001"
 bones/2/parent = 1
 bones/2/rest = Transform3D(0.999983, 0.00579636, 0.000100186, -0.00579636, 0.999385, 0.0345866, 0.000100352, -0.0345866, 0.999402, -5.96629e-10, 1.06328, -7.38362e-09)
 bones/2/enabled = true
-bones/2/position = Vector3(-5.96629e-10, 1.06328, -7.38362e-09)
+bones/2/position = Vector3(-4.12336e-10, 1.06328, 2.90828e-08)
 bones/2/rotation = Quaternion(-0.0172939, -7.53506e-08, -0.00289864, 0.999846)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.002"
@@ -475,7 +475,7 @@ bones/12/name = "Bone.011"
 bones/12/parent = 11
 bones/12/rest = Transform3D(0.99999, -0.00448158, -0.000380573, 0.0044749, 0.982839, 0.184409, -0.000452403, -0.184409, 0.982849, -1.11759e-08, 0.81954, -1.0177e-06)
 bones/12/enabled = true
-bones/12/position = Vector3(-1.11759e-08, 0.81954, -1.0177e-06)
+bones/12/position = Vector3(-1.63461e-08, 0.81954, -1.434e-06)
 bones/12/rotation = Quaternion(-0.0926026, 1.80354e-05, 0.00224878, 0.995701)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "Top_limit"
@@ -496,7 +496,7 @@ bones/15/name = "TOP_Invers_IK"
 bones/15/parent = 14
 bones/15/rest = Transform3D(0.99993, 0.00905402, -0.0076079, -0.0115536, 0.610614, -0.791844, -0.00252388, 0.791877, 0.610676, -2.6077e-08, 6.78365, 1.97673e-07)
 bones/15/enabled = true
-bones/15/position = Vector3(-2.6077e-08, 6.78365, 1.97673e-07)
+bones/15/position = Vector3(-1.31261e-08, 6.78365, -9.35087e-07)
 bones/15/rotation = Quaternion(0.441203, -0.00141634, -0.005741, 0.897388)
 bones/15/scale = Vector3(1, 1, 1)
 bones/16/name = "Bone.012"
@@ -622,4 +622,4 @@ libraries = {
 }
 
 [node name="ArrowAttachPosition" type="Node3D" parent="."]
-transform = Transform3D(0.0128452, 0, 0.999918, 0, 1, 0, -0.999918, 0, 0.0128452, 0.305116, 0, -0.0194779)
+transform = Transform3D(0.0128452, 0, 0.999918, 0, 1, 0, -0.999918, 0, 0.0128452, 0.305, 0, 0)

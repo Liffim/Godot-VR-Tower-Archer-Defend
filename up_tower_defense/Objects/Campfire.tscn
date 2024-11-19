@@ -10,21 +10,21 @@ size = Vector3(0.599121, 0.490112, 0.597412)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.108696, 1), 0.0, 0.0, 0, 0, Vector2(0.347826, 1), 0.0, 0.0, 0, 0, Vector2(0.355072, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="CurveTexture" id="CurveTexture_wfg6c"]
+[sub_resource type="CurveTexture" id="CurveTexture_80hnj"]
 curve = SubResource("Curve_iqjbh")
 
 [sub_resource type="Gradient" id="Gradient_6jxon"]
 offsets = PackedFloat32Array(0, 0.309091, 0.381818, 0.481818)
 colors = PackedColorArray(1, 0.345098, 0, 1, 1, 1, 0.309804, 1, 0, 0, 0, 1, 0, 0, 0, 0.156863)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uwsv7"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kbncq"]
 gradient = SubResource("Gradient_6jxon")
 
 [sub_resource type="Curve" id="Curve_u8udg"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_a463c"]
+[sub_resource type="CurveTexture" id="CurveTexture_1n0gk"]
 curve = SubResource("Curve_u8udg")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fvwfi"]
@@ -38,13 +38,13 @@ angular_velocity_min = -30.0
 angular_velocity_max = 30.0
 gravity = Vector3(0, 1.62, 0)
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_a463c")
-color_ramp = SubResource("GradientTexture1D_uwsv7")
-alpha_curve = SubResource("CurveTexture_wfg6c")
+scale_curve = SubResource("CurveTexture_1n0gk")
+color_ramp = SubResource("GradientTexture1D_kbncq")
+alpha_curve = SubResource("CurveTexture_80hnj")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44ps5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq8oi"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -56,7 +56,7 @@ particles_anim_v_frames = 8
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_h4eih"]
-material = SubResource("StandardMaterial3D_44ps5")
+material = SubResource("StandardMaterial3D_nq8oi")
 
 [node name="Node3D" type="Node3D"]
 
