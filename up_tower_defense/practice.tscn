@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://krnnqhlrsakq"]
+[gd_scene load_steps=20 format=3 uid="uid://krnnqhlrsakq"]
 
 [ext_resource type="Script" path="res://practice.gd" id="1_m2io1"]
 [ext_resource type="PackedScene" uid="uid://hysp3fvhnhup" path="res://XR Origin/xr_origin.tscn" id="3_rjpk7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c3ef22bh8ilv8" path="res://target_moving.tscn" id="7_86by0"]
 [ext_resource type="PackedScene" uid="uid://f7btj46o4pfm" path="res://tower temp.tscn" id="8_qo6m6"]
 [ext_resource type="PackedScene" uid="uid://bs4io82xciw20" path="res://bow.tscn" id="9_wy624"]
+[ext_resource type="PackedScene" uid="uid://dgu4illt0owet" path="res://torch.tscn" id="10_ghy0g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_an3j0"]
 sky_top_color = Color(1.92523e-06, 0.482964, 0.68983, 1)
@@ -104,3 +105,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.570762, 1.36276, 7.80888)
 
 [node name="towerBodyMesh" parent="." groups=["arrow_collision"] instance=ExtResource("8_qo6m6")]
 transform = Transform3D(0.359936, 0, 0, 0, 1, 0, 0, 0, 0.267638, -0.41933, -2.37059, 7.79527)
+
+[node name="Torch" parent="." instance=ExtResource("10_ghy0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0552, 1.8999e-07, 10.3824)

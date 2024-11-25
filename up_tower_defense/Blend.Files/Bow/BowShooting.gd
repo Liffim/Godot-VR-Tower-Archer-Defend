@@ -25,7 +25,16 @@ func _ready():
 	else:
 		print("ArrowScene type:", typeof(ArrowScene))
 
+@onready var bow_pickable : RigidBody3D = $".."
 func _process(delta):
+	if holstered:
+		bow_pickable.freeze = true
+		bow_pickable.rotation = Vector3(0,0,0)
+		bow_pickable.rotation.z = deg_to_rad(90)
+		bow_pickable.global_position = CharacterGlobal.holster_position
+	else:
+		bow_pickable.freeze = false
+	
 	if is_drawing:
 		#var bow_all = $"."
 		#bow_all.look_at(bow_all.global_position + CharacterGlobal.right_position.direction_to(CharacterGlobal.left_position))
@@ -53,6 +62,7 @@ func _process(delta):
 
 func _on_grabbed(pickable, by):
 	var hand_name = _get_hand_name(by)
+	holstered = false
 	if hand_name == "Left Hand" or hand_name == "GrabPointHandLeft":
 		left_hand_grabbed = true
 	elif hand_name == "Right Hand" or hand_name == "GrabPointHandRight":
@@ -61,12 +71,17 @@ func _on_grabbed(pickable, by):
 	if left_hand_grabbed and right_hand_grabbed:
 		start_drawing()
 
+var holstered = true
+
 func _on_released(pickable, by):
 	var hand_name = _get_hand_name(by)
 	if hand_name == "Left Hand" or hand_name == "GrabPointHandLeft":
 		left_hand_grabbed = false
 	elif hand_name == "Right Hand" or hand_name == "GrabPointHandRight":
 		right_hand_grabbed = false
+		
+	if not (left_hand_grabbed or right_hand_grabbed):
+		holstered = true
 
 	release_arrow()
 
@@ -102,11 +117,13 @@ func start_drawing():
 				return
 
 			arrow_instance.freeze = true  # Freeze the arrow while it's attached to the bow
-
+			
 			# Add the arrow as a child of arrow_attach_position
 			arrow_attach_position.add_child(arrow_instance)
 			arrow_instance.transform = Transform3D.IDENTITY  # Reset transform to align with parent
-
+			if CharacterGlobal.burning_arrow:
+				call_deferred("start_burning")
+			CharacterGlobal.burning_arrow = false
 			# Set arrow's global transform to match arrow_attach_position
 			arrow_instance.global_transform = arrow_attach_position.global_transform
 
@@ -115,7 +132,8 @@ func start_drawing():
 		animation_player.play(animation_name)
 		animation_player.pause()
 
-
+func start_burning():
+	arrow_instance.start_burning()
 
 func release_arrow():
 	CharacterGlobal.rumbler.cancel()

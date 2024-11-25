@@ -28,6 +28,7 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 [global_group]
 
 arrow_collision=""
+arrow_fire=""
 
 [godot_xr_tools]
 

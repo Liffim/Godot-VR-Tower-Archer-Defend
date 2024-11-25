@@ -18,6 +18,7 @@ closed_pose = ExtResource("6_yeucs")
 [node name="PickableObject" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 196615
+freeze = true
 freeze_mode = 1
 script = ExtResource("1_np68p")
 ranged_grab_method = 2
