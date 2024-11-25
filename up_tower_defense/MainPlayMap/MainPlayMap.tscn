@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://blwbu7p5b0kwc"]
+[gd_scene load_steps=28 format=3 uid="uid://blwbu7p5b0kwc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_5bor6"]
 [ext_resource type="PackedScene" uid="uid://dfj84l6l2jptm" path="res://Blend.Files/Map/GrassLand.glb" id="1_urkk6"]
@@ -15,8 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://b5f32xtvfoisg" path="res://Blend.Files/Map Details/tree2.glb" id="12_0l51v"]
 [ext_resource type="PackedScene" uid="uid://b8i5gbndt66u2" path="res://ladder_step.tscn" id="13_e8kcp"]
 [ext_resource type="PackedScene" uid="uid://f7btj46o4pfm" path="res://tower temp.tscn" id="14_t8env"]
+[ext_resource type="PackedScene" uid="uid://cm8l2ugdrg1cn" path="res://Blend.Files/Map Details/Buildings/house medieval.glb" id="16_3ecll"]
 [ext_resource type="PackedScene" uid="uid://bfdataecshtdw" path="res://spawn_point.tscn" id="17_13gvd"]
+[ext_resource type="PackedScene" uid="uid://d1oswvwidou5m" path="res://Blend.Files/Map Details/Buildings/house medieval1.glb" id="17_el25i"]
 [ext_resource type="PackedScene" uid="uid://bs4io82xciw20" path="res://bow.tscn" id="17_f0wtn"]
+[ext_resource type="PackedScene" uid="uid://dylpo0jrmuvch" path="res://Blend.Files/Map Details/Buildings/house medieval2.glb" id="18_i3vpb"]
+[ext_resource type="PackedScene" uid="uid://b1ip2oy5glnd2" path="res://Blend.Files/Map Details/Buildings/house medieval3.glb" id="19_nq0ep"]
+[ext_resource type="PackedScene" uid="uid://2obiswu4sxp1" path="res://Blend.Files/Map Details/Buildings/early tower finished_Applied.glb" id="22_1ib6w"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1baft"]
 
@@ -386,15 +391,38 @@ transform = Transform3D(0.342895, 0, 1.97039, 0, 2, 0, -1.97039, 0, 0.342895, -1
 
 [node name="Ladder" parent="MapObjects/TowerPlaceHolder" instance=ExtResource("13_e8kcp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.45975, 0.982888, 11.4203)
+visible = false
 
 [node name="Ladder2" parent="MapObjects/TowerPlaceHolder" instance=ExtResource("13_e8kcp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.45975, 3.00117, 11.4203)
+visible = false
 
 [node name="towerBodyMesh" parent="MapObjects/TowerPlaceHolder" instance=ExtResource("14_t8env")]
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, -3.47684, 2, 11.3852)
+visible = false
+
+[node name="Houses" type="Node3D" parent="MapObjects"]
+
+[node name="house medieval" parent="MapObjects/Houses" instance=ExtResource("16_3ecll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.1933, 0.387258, 0.0602341)
+
+[node name="house medieval1" parent="MapObjects/Houses" instance=ExtResource("17_el25i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.16, 0.5, -6.01401)
+
+[node name="house medieval2" parent="MapObjects/Houses" instance=ExtResource("18_i3vpb")]
+transform = Transform3D(0.999946, 0.0103496, 0, -0.0103496, 0.999946, 0, 0, 0, 1, -26.5356, 0.499998, -10.7899)
+
+[node name="house medieval3" parent="MapObjects/Houses" instance=ExtResource("19_nq0ep")]
+transform = Transform3D(-0.268315, 0, -0.963331, 0, 1, 0, 0.963331, 0, -0.268315, -5.3786, 0.500001, 53.8834)
+
+[node name="house medieval4" parent="MapObjects/Houses" instance=ExtResource("17_el25i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4368, 0.500002, 30.5907)
+
+[node name="house medieval5" parent="MapObjects/Houses" instance=ExtResource("18_i3vpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.0528, 0.500002, 13.0923)
 
 [node name="PickableObject2" parent="." instance=ExtResource("17_f0wtn")]
-transform = Transform3D(0.668936, 0, 0.74332, 0, 1, 0, -0.74332, 0, 0.668936, 4.29336, 11.4975, 29.4492)
+transform = Transform3D(0.668936, 0, 0.74332, 0, 1, 0, -0.74332, 0, 0.668936, 4.29336, 15.2414, 29.4492)
 gravity_scale = 0.0
 
 [node name="SpawnPoint" parent="." instance=ExtResource("17_13gvd")]
@@ -431,5 +459,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4901, 1.5, 31.1906)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4831, 1.5, 48.4754)
 
 [node name="PickableObject3" parent="." instance=ExtResource("17_f0wtn")]
-transform = Transform3D(-0.105049, 0, 0.994467, 0, 1, 0, -0.994467, 0, -0.105049, -1.36034, 2.87323, -1.27281)
+transform = Transform3D(-0.105049, 0, 0.994467, 0, 1, 0, -0.994467, 0, -0.105049, -1.36, 2.873, -1.273)
 gravity_scale = 0.0
+
+[node name="Tower" type="Node3D" parent="."]
+
+[node name="TowerModel" parent="Tower" instance=ExtResource("22_1ib6w")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.3472, -6.97094, 31.8384)
+
+[node name="Ladder2" parent="Tower" instance=ExtResource("13_e8kcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 12.0644, 27.5437)
+
+[node name="Ladder3" parent="Tower" instance=ExtResource("13_e8kcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 10.0757, 27.5437)
+
+[node name="Ladder4" parent="Tower" instance=ExtResource("13_e8kcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 8.13325, 27.5437)
+
+[node name="Ladder2" parent="." instance=ExtResource("13_e8kcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 6.17026, 27.5437)
+
+[node name="Ladder3" parent="." instance=ExtResource("13_e8kcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 4.22231, 27.5437)
+
+[node name="Ladder4" parent="." instance=ExtResource("13_e8kcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 2.30237, 27.5437)
+
+[node name="Ladder5" parent="." instance=ExtResource("13_e8kcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 0.317444, 27.5437)

@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	CharacterGlobal.rumbler = $"Right Hand/XRToolsRumbler"
 	if CharacterGlobal.burning_arrow:
 		$"Right Hand/Arrow".start_burning()
+		# this is bug
 	if not CharacterGlobal.burning_arrow:
 		$"Right Hand/Arrow".stop_burning()
 	if CharacterGlobal.arrow:
