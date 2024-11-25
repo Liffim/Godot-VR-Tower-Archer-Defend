@@ -8,3 +8,6 @@ var burning_arrow : bool = false
 var arrow : bool = false
 var drawing : bool = false
 var drawing_arrow : bool = false
+var holster : bool = false
+var holster_position : Vector3
+var holster_rotation : float

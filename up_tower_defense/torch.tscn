@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgu4illt0owet"]
+[gd_scene load_steps=14 format=3 uid="uid://dgu4illt0owet"]
 
 [ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="1_mgrvp"]
 
@@ -63,6 +63,9 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_mu7u4"]
 material = SubResource("StandardMaterial3D_vp7e1")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mdecq"]
+radius = 0.179698
+
 [node name="Torch" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -78,3 +81,9 @@ randomness = 1.0
 visibility_aabb = AABB(-0.1, 0.5, -0.085, 0.24, 0.5, 0.2)
 process_material = SubResource("ParticleProcessMaterial_ybm5n")
 draw_pass_1 = SubResource("QuadMesh_mu7u4")
+
+[node name="Area3D" type="Area3D" parent="." groups=["arrow_fire"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.973692, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["arrow_fire"]]
+shape = SubResource("SphereShape3D_mdecq")

@@ -8,6 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	CharacterGlobal.holster_position = $Node3D/Holster.global_position
+	CharacterGlobal.holster_rotation = $XRCamera3D.rotation.y
 	if XRHelpers.get_right_controller(self).is_button_pressed("trigger") and not CharacterGlobal.drawing and not CharacterGlobal.arrow and right_hand_behind():
 		grab_arrow(true)
 	if not XRHelpers.get_right_controller(self).is_button_pressed("trigger") and CharacterGlobal.arrow:
@@ -18,6 +20,8 @@ func _process(delta: float) -> void:
 	CharacterGlobal.rumbler = $"Right Hand/XRToolsRumbler"
 	if CharacterGlobal.burning_arrow:
 		$"Right Hand/Arrow".start_burning()
+	if not CharacterGlobal.burning_arrow:
+		$"Right Hand/Arrow".stop_burning()
 	if CharacterGlobal.arrow:
 		$"Right Hand/Arrow".visible = true
 	else:
@@ -25,9 +29,10 @@ func _process(delta: float) -> void:
 
 func grab_arrow(boolie):
 	CharacterGlobal.arrow = boolie
+	CharacterGlobal.burning_arrow = false
 
 func right_hand_behind():
-	if $"Right Hand".position.z < $XRCamera3D.position.z:
+	if $XRCamera3D/Node3D2.position.z < 0:
 		return false
 	return true
 
