@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://krnnqhlrsakq"]
+[gd_scene load_steps=28 format=3 uid="uid://krnnqhlrsakq"]
 
 [ext_resource type="Script" path="res://practice.gd" id="1_m2io1"]
 [ext_resource type="PackedScene" uid="uid://dkff6fme5d6yk" path="res://Blend.Files/Map/practise_background.glb" id="2_yw8yi"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://q6dlah47wyas" path="res://Blend.Files/Map Details/Rock1.glb" id="15_ckwrd"]
 [ext_resource type="PackedScene" uid="uid://dlge80pkg18ve" path="res://Blend.Files/Map Details/SmallBush.glb" id="16_j2rkh"]
 [ext_resource type="PackedScene" uid="uid://d1oswvwidou5m" path="res://Blend.Files/Map Details/Buildings/house medieval1.glb" id="17_6f437"]
+[ext_resource type="PackedScene" uid="uid://c1wcasvg1yi7k" path="res://Blend.Files/Map/practise_background_col.glb" id="18_a3vg2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_an3j0"]
 sky_top_color = Color(1.92523e-06, 0.482964, 0.68983, 1)
@@ -71,6 +72,7 @@ mesh = SubResource("BoxMesh_qsnyl")
 
 [node name="practise_background" parent="StaticBody3D/CollisionShape3D" instance=ExtResource("2_yw8yi")]
 transform = Transform3D(0.998295, 0, 0.173637, 0, 1.395, 0, -0.0583655, 0, 2.96993, -1.89148, -1.82055, -19.0298)
+visible = false
 
 [node name="XROrigin3D" parent="." instance=ExtResource("3_rjpk7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.83572)
@@ -179,7 +181,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0487719, -4.84288e-08, 12.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19286, 1.8999e-07, 0.63301)
 
 [node name="house medieval1" parent="Enviroment" instance=ExtResource("17_6f437")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.284, 3.15853, 2.90241)
+transform = Transform3D(0.998344, 0.0572529, 0.00550304, -0.0575037, 0.991494, 0.116762, 0.00122875, -0.116885, 0.993145, 10.284, 2.39752, 13.4127)
 
 [node name="DeadTree3" parent="Enviroment" instance=ExtResource("13_p2ftk")]
 transform = Transform3D(0.672604, -0.02232, 0.739666, -0.483101, 0.74391, 0.461749, -0.560551, -0.667907, 0.489574, 1.57328, 1.9059, 16.5979)
@@ -248,7 +250,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.2725, 0, 6.19973)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.7324, 0, 9.41199)
 
 [node name="PineTree23" parent="Enviroment" instance=ExtResource("14_6upru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.06, 0, 13.5019)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.06, 1.15216, 13.5019)
 
 [node name="PineTree24" parent="Enviroment" instance=ExtResource("14_6upru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.4832, 1.82095, 20.2472)
@@ -276,3 +278,6 @@ transform = Transform3D(0.139173, -0.102532, 0.98947, 0, 2.57792, 0.0401318, -0.
 
 [node name="PineTree32" parent="Enviroment" instance=ExtResource("14_6upru")]
 transform = Transform3D(0.997744, 0.266831, 0, -0.0671272, 3.96603, 0, 0, 0, 1, -34.9195, 0.947548, 20.2782)
+
+[node name="practise_background_col" parent="." instance=ExtResource("18_a3vg2")]
+transform = Transform3D(-4.37114e-08, 0, 2.9, 0, 1.31, 0, -1, 0, -1.26763e-07, -27.5131, -1.83622, 8.92741)
