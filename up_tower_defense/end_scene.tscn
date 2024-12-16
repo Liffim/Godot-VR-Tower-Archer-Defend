@@ -1,0 +1,165 @@
+[gd_scene load_steps=23 format=3 uid="uid://bdf2opug0rcl5"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_rj86y"]
+[ext_resource type="PackedScene" uid="uid://cugsw6v6khpuk" path="res://XR Origin/xr_origin_mainMenu.tscn" id="2_j8vq8"]
+[ext_resource type="PackedScene" uid="uid://do2tp57xyv6tx" path="res://Blend.Files/Map Details/DeadTree.glb" id="3_pvhwu"]
+[ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="4_xud1b"]
+[ext_resource type="PackedScene" uid="uid://re0lowcgdwel" path="res://Blend.Files/RandomObjects/rope.glb" id="5_24dfe"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_otsqq"]
+[ext_resource type="PackedScene" uid="uid://b5moq3vwfcmrk" path="res://Objects/TentUI.tscn" id="7_s0uwv"]
+[ext_resource type="PackedScene" uid="uid://ud78ce4v4axw" path="res://tooltip.tscn" id="8_b5j6j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ybec"]
+size = Vector3(1, 0.135742, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f07t8"]
+albedo_color = Color(0.445833, 1, 0.05, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2lqf"]
+material = SubResource("StandardMaterial3D_f07t8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aowr8"]
+size = Vector3(0.1, 5, 7)
+
+[sub_resource type="Environment" id="Environment_fajxc"]
+background_mode = 1
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Curve" id="Curve_vh0n7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.108696, 1), 0.0, 0.0, 0, 0, Vector2(0.347826, 1), 0.0, 0.0, 0, 0, Vector2(0.355072, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_80hnj"]
+curve = SubResource("Curve_vh0n7")
+
+[sub_resource type="Gradient" id="Gradient_lyinm"]
+offsets = PackedFloat32Array(0, 0.309091, 0.381818, 0.481818)
+colors = PackedColorArray(1, 0.345098, 0, 1, 1, 1, 0.309804, 1, 0, 0, 0, 1, 0, 0, 0, 0.156863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kbncq"]
+gradient = SubResource("Gradient_lyinm")
+
+[sub_resource type="Curve" id="Curve_4n8ag"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1n0gk"]
+curve = SubResource("Curve_4n8ag")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gmofv"]
+emission_shape_scale = Vector3(1, 0.5, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+gravity = Vector3(0, 1.62, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_1n0gk")
+color_ramp = SubResource("GradientTexture1D_kbncq")
+alpha_curve = SubResource("CurveTexture_80hnj")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq8oi"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_xud1b")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_v68il"]
+material = SubResource("StandardMaterial3D_nq8oi")
+
+[node name="EndScene" type="Node3D"]
+script = ExtResource("1_rj86y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.363728, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.896206, 0)
+shape = SubResource("BoxShape3D_5ybec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 0.13, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_n2lqf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.363728, 0)
+shape = SubResource("BoxShape3D_aowr8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.363728, 3.5)
+shape = SubResource("BoxShape3D_aowr8")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -0.363728, 0)
+shape = SubResource("BoxShape3D_aowr8")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.363728, -3.5)
+shape = SubResource("BoxShape3D_aowr8")
+
+[node name="XROrigin3D" parent="." instance=ExtResource("2_j8vq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.174922, 1.18573)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fajxc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(0, 0, 0, 1)
+
+[node name="DeadTree" parent="." instance=ExtResource("3_pvhwu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.116251, 0.0104909, -3.22148)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="DeadTree"]
+transform = Transform3D(0.75, 0, 0, 0, 1, 0, 0, 0, 0.75, 0.717041, 5.73779, -0.0151129)
+amount = 100
+lifetime = 2.0
+speed_scale = 0.5
+visibility_aabb = AABB(-0.1, 0.5, -0.085, 0.24, 0.5, 0.2)
+process_material = SubResource("ParticleProcessMaterial_gmofv")
+draw_pass_1 = SubResource("QuadMesh_v68il")
+
+[node name="rope" parent="DeadTree" instance=ExtResource("5_24dfe")]
+transform = Transform3D(4.77771, 0, 1.47429, 0, 5, 0, -1.47429, 0, 4.77771, -0.940325, 2.37853, 0.824043)
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="DeadTree"]
+transform = Transform3D(0.75, 0, 0, 0, 1, 0, 0, 0, 0.75, 1.86159, 3.9304, 1.32856)
+amount = 100
+lifetime = 2.0
+speed_scale = 0.5
+visibility_aabb = AABB(-0.1, 0.5, -0.085, 0.24, 0.5, 0.2)
+process_material = SubResource("ParticleProcessMaterial_gmofv")
+draw_pass_1 = SubResource("QuadMesh_v68il")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="DeadTree"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.79378, 4.11509, 1.3525)
+light_color = Color(0.595412, 0.327535, 4.81307e-07, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="DeadTree"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.741887, 5.87818, -0.0323009)
+light_color = Color(0.595412, 0.327535, 4.81307e-07, 1)
+
+[node name="Exit" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.61719)
+
+[node name="Viewport2Din3D" parent="Exit" instance=ExtResource("6_otsqq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.665455, -0.141062)
+scene = ExtResource("7_s0uwv")
+
+[node name="Tooltip" parent="Exit/Viewport2Din3D" instance=ExtResource("8_b5j6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26899, 3.61719)
+top_level = true
+text = "Exit"
+
+[connection signal="pointer_event" from="Exit/Viewport2Din3D" to="Exit/Viewport2Din3D/Tooltip" method="_on_viewport_2_din_3d_pointer_event"]
