@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dgu4illt0owet"]
 
 [ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="1_mgrvp"]
-[ext_resource type="PackedScene" uid="uid://crwpadng868ff" path="res://Blend.Files/RandomObjects/torch.glb" id="2_m1wnb"]
+[ext_resource type="PackedScene" uid="uid://ck84k83sqwp1n" path="res://Blend.Files/RandomObjects/torch1.glb" id="2_kxv3d"]
 
 [sub_resource type="Curve" id="Curve_o8bra"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.108696, 1), 0.0, 0.0, 0, 0, Vector2(0.347826, 1), 0.0, 0.0, 0, 0, Vector2(0.355072, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -62,7 +62,7 @@ radius = 0.0991004
 [node name="Torch" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.00649506, 0, 0, 0, 0.0726779, 0, 0, 0, 0.75, 0.0238386, 0.182535, 0)
+transform = Transform3D(0.00649506, 0, 0, 0, 0.0726779, 0, 0, 0, 0.75, 0.124206, 0.413309, 0)
 amount = 100
 lifetime = 2.0
 speed_scale = 0.5
@@ -72,10 +72,10 @@ process_material = SubResource("ParticleProcessMaterial_ybm5n")
 draw_pass_1 = SubResource("QuadMesh_mu7u4")
 
 [node name="Area3D" type="Area3D" parent="." groups=["arrow_fire"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215194, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108869, 0.422575, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["arrow_fire"]]
 shape = SubResource("SphereShape3D_mdecq")
 
-[node name="torch" parent="." instance=ExtResource("2_m1wnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0941809, 0, 0)
+[node name="torch1" parent="." instance=ExtResource("2_kxv3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215194, 0)
