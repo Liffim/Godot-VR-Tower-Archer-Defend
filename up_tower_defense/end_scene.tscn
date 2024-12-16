@@ -1,13 +1,13 @@
 [gd_scene load_steps=23 format=3 uid="uid://bdf2opug0rcl5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_rj86y"]
-[ext_resource type="PackedScene" uid="uid://cugsw6v6khpuk" path="res://XR Origin/xr_origin_mainMenu.tscn" id="2_j8vq8"]
 [ext_resource type="PackedScene" uid="uid://do2tp57xyv6tx" path="res://Blend.Files/Map Details/DeadTree.glb" id="3_pvhwu"]
 [ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="4_xud1b"]
 [ext_resource type="PackedScene" uid="uid://re0lowcgdwel" path="res://Blend.Files/RandomObjects/rope.glb" id="5_24dfe"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_otsqq"]
 [ext_resource type="PackedScene" uid="uid://b5moq3vwfcmrk" path="res://Objects/TentUI.tscn" id="7_s0uwv"]
 [ext_resource type="PackedScene" uid="uid://ud78ce4v4axw" path="res://tooltip.tscn" id="8_b5j6j"]
+[ext_resource type="PackedScene" uid="uid://dqgp8ijy622yi" path="res://XR Origin/xr_origin_endMenu.tscn" id="8_oqmke"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ybec"]
 size = Vector3(1, 0.135742, 1)
@@ -109,9 +109,6 @@ shape = SubResource("BoxShape3D_aowr8")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.363728, -3.5)
 shape = SubResource("BoxShape3D_aowr8")
 
-[node name="XROrigin3D" parent="." instance=ExtResource("2_j8vq8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.174922, 1.18573)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fajxc")
 
@@ -161,5 +158,7 @@ scene = ExtResource("7_s0uwv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26899, 3.61719)
 top_level = true
 text = "Exit"
+
+[node name="XROrigin3D2" parent="." instance=ExtResource("8_oqmke")]
 
 [connection signal="pointer_event" from="Exit/Viewport2Din3D" to="Exit/Viewport2Din3D/Tooltip" method="_on_viewport_2_din_3d_pointer_event"]
