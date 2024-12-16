@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://uamrv60rd8ip"
-path="res://.godot/imported/campfire.glb-de7e20f16d42e62f7198ad1ab9c8b5dc.scn"
+uid="uid://do2tp57xyv6tx"
+path="res://.godot/imported/DeadTree.glb-31a388ec9604814ac5f3023103e852f6.scn"
 
 [deps]
 
-source_file="res://Blend.Files/campfire.glb"
-dest_files=["res://.godot/imported/campfire.glb-de7e20f16d42e62f7198ad1ab9c8b5dc.scn"]
+source_file="res://Blend.Files/Map Details/DeadTree.glb"
+dest_files=["res://.godot/imported/DeadTree.glb-31a388ec9604814ac5f3023103e852f6.scn"]
 
 [params]
 

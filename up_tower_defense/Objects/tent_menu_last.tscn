@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://slrdif6psdlp"]
 
-[ext_resource type="PackedScene" uid="uid://bbnon0jf4sew6" path="res://Blend.Files/tent.glb" id="1_n0a5s"]
-[ext_resource type="Script" path="res://Blend.Files/tent_menu.gd" id="2_122o7"]
+[ext_resource type="PackedScene" uid="uid://bbnon0jf4sew6" path="res://Blend.Files/RandomObjects/tent.glb" id="1_n0a5s"]
+[ext_resource type="Script" path="res://Blend.Files/RandomObjects/tent_menu.gd" id="2_122o7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mil0n"]
 size = Vector3(3.04811, 2.95905, 1.94067)

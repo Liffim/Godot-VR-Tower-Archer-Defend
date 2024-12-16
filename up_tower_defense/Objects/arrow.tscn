@@ -1,13 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://cecb51wl8ykub"]
+[gd_scene load_steps=15 format=3 uid="uid://cecb51wl8ykub"]
 
 [ext_resource type="Script" path="res://Objects/arrow.gd" id="1_dlawf"]
-[ext_resource type="PackedScene" uid="uid://dudqbhpj60pvx" path="res://Blend.Files/arrow.glb" id="1_opyb4"]
+[ext_resource type="PackedScene" uid="uid://dudqbhpj60pvx" path="res://Blend.Files/Bow/arrow.glb" id="1_opyb4"]
+[ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="3_vu5ba"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wfpdk"]
-size = Vector3(0.37207, 0.37854, 4.28168)
+size = Vector3(0.0869141, 0.0759277, 3.67188)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3egfl"]
-size = Vector3(0.0195313, 0.0214844, 0.00805664)
+size = Vector3(0.0510254, 0.0556641, 0.0564117)
+
+[sub_resource type="Curve" id="Curve_107pj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.108696, 1), 0.0, 0.0, 0, 0, Vector2(0.347826, 1), 0.0, 0.0, 0, 0, Vector2(0.355072, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_jiypg"]
+curve = SubResource("Curve_107pj")
+
+[sub_resource type="Gradient" id="Gradient_1cs5q"]
+offsets = PackedFloat32Array(0, 0.309091, 0.381818, 0.481818)
+colors = PackedColorArray(1, 0.345098, 0, 1, 1, 1, 0.309804, 1, 0, 0, 0, 1, 0, 0, 0, 0.156863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t72se"]
+gradient = SubResource("Gradient_1cs5q")
+
+[sub_resource type="Curve" id="Curve_3rn3g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5wgop"]
+curve = SubResource("Curve_3rn3g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1o8li"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+gravity = Vector3(0, 1.62, 0)
+scale_min = 0.01
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_5wgop")
+color_ramp = SubResource("GradientTexture1D_t72se")
+alpha_curve = SubResource("CurveTexture_jiypg")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfa0e"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_vu5ba")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_lvb41"]
+material = SubResource("StandardMaterial3D_mfa0e")
 
 [node name="RigidBody3D" type="RigidBody3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -24,9 +78,24 @@ shape = SubResource("BoxShape3D_wfpdk")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83452e-09, 0, -0.110601)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000260383, 0.000588812, -0.226477)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000260382, 0.000588812, -0.229155)
 shape = SubResource("BoxShape3D_3egfl")
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 1, 0, 0, 0, 0.75, -8.53376e-09, 0, -0.19523)
+visible = false
+amount = 100
+lifetime = 0.3
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_1o8li")
+draw_pass_1 = SubResource("QuadMesh_lvb41")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

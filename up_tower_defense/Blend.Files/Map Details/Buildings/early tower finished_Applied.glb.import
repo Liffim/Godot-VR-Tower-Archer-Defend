@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cu34iq6vxxh7"
-path="res://.godot/imported/bow low poly final.glb-271e68d5b612e5dc20acd87695490da1.scn"
+uid="uid://2obiswu4sxp1"
+path="res://.godot/imported/early tower finished_Applied.glb-9a898430afbc9d3ba9627e3ec3eec0a3.scn"
 
 [deps]
 
-source_file="res://Blend.Files/bow low poly final.glb"
-dest_files=["res://.godot/imported/bow low poly final.glb-271e68d5b612e5dc20acd87695490da1.scn"]
+source_file="res://Blend.Files/Map Details/Buildings/early tower finished_Applied.glb"
+dest_files=["res://.godot/imported/early tower finished_Applied.glb-9a898430afbc9d3ba9627e3ec3eec0a3.scn"]
 
 [params]
 

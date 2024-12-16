@@ -1,15 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://hysp3fvhnhup"]
+[gd_scene load_steps=19 format=3 uid="uid://hysp3fvhnhup"]
 
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_fluor"]
+[ext_resource type="Script" path="res://XR Origin/char.gd" id="1_k8nrq"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_3xthk"]
+[ext_resource type="Texture2D" uid="uid://c6ls1vaugdil5" path="res://Blend.Files/Mountain_Mountains.png" id="2_623r0"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_eumah"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_36ohq"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_4vubp"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_6ghka"]
 [ext_resource type="PackedScene" uid="uid://bxm1ply47vaan" path="res://addons/godot-xr-tools/functions/movement_climb.tscn" id="4_50rm0"]
+[ext_resource type="Material" uid="uid://dy6nhifvvmm73" path="res://addons/godot-xr-tools/hands/materials/caucasian_hand.tres" id="4_fnum5"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_juupa"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="6_5b0yb"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="9_an4hb"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/rumble/rumbler.gd" id="10_nkcgl"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/rumble/rumble_event.gd" id="11_h5f8f"]
+[ext_resource type="PackedScene" uid="uid://cecb51wl8ykub" path="res://Objects/arrow.tscn" id="13_qcan1"]
+
+[sub_resource type="Resource" id="Resource_7y34i"]
+script = ExtResource("11_h5f8f")
+magnitude = 0.0
+active_during_pause = false
+indefinite = true
+duration_ms = 300
 
 [sub_resource type="Resource" id="Resource_bcdvg"]
 script = ExtResource("9_an4hb")
@@ -24,13 +37,22 @@ bounciness = 0.0
 bounce_threshold = 1.0
 
 [node name="XROrigin3D" type="XROrigin3D"]
+script = ExtResource("1_k8nrq")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="Node3D2" type="Node3D" parent="XRCamera3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.841179)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_623r0")
 
 [node name="Left Hand" type="XRController3D" parent="."]
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="Left Hand" instance=ExtResource("1_fluor")]
+hand_material_override = ExtResource("4_fnum5")
 
 [node name="FunctionPickup" parent="Left Hand" instance=ExtResource("3_36ohq")]
 
@@ -40,13 +62,18 @@ tracker = &"left_hand"
 show_laser = 2
 laser_length = 1
 
-[node name="MovementTurn" parent="Left Hand" instance=ExtResource("4_4vubp")]
-turn_mode = 2
+[node name="MovementDirect" parent="Left Hand" instance=ExtResource("2_eumah")]
+max_speed = 3.5
+strafe = true
 
 [node name="Right Hand" type="XRController3D" parent="."]
 tracker = &"right_hand"
 
+[node name="Node3D" type="RemoteTransform3D" parent="Right Hand"]
+remote_path = NodePath("../../XRCamera3D/Node3D2")
+
 [node name="RightHand" parent="Right Hand" instance=ExtResource("2_3xthk")]
+hand_material_override = ExtResource("4_fnum5")
 
 [node name="FunctionPickup" parent="Right Hand" instance=ExtResource("3_36ohq")]
 
@@ -59,8 +86,27 @@ jump_button_action = "ax_button"
 show_laser = 2
 laser_length = 1
 
-[node name="MovementDirect" parent="Right Hand" instance=ExtResource("2_eumah")]
-strafe = true
+[node name="MovementTurn" parent="Right Hand" instance=ExtResource("4_4vubp")]
+turn_mode = 2
+
+[node name="XRToolsRumbler" type="Node" parent="Right Hand" node_paths=PackedStringArray("target")]
+script = ExtResource("10_nkcgl")
+event = SubResource("Resource_7y34i")
+target = NodePath("..")
+
+[node name="Arrow" parent="Right Hand" instance=ExtResource("13_qcan1")]
+transform = Transform3D(0.999061, -0.0161433, 0.0402026, 0.043227, 0.433079, -0.900319, -0.00287673, 0.901211, 0.43337, 0.014, -0.04, 0.1)
+visible = false
+mass = 0.001
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Holster" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.9, 0)
 
 [node name="PlayerBody" parent="." instance=ExtResource("4_6ghka")]
+collision_mask = 1019
 physics = SubResource("Resource_bcdvg")

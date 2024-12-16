@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgc44scj81smv"]
+[gd_scene load_steps=19 format=3 uid="uid://bgc44scj81smv"]
 
 [ext_resource type="PackedScene" uid="uid://cugsw6v6khpuk" path="res://XR Origin/xr_origin_mainMenu.tscn" id="1_o8up7"]
 [ext_resource type="Script" path="res://main_menu.gd" id="1_rwmnq"]
 [ext_resource type="PackedScene" uid="uid://slrdif6psdlp" path="res://Objects/tent_menu_last.tscn" id="3_6qhgx"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="4_olp4n"]
 [ext_resource type="PackedScene" uid="uid://b5moq3vwfcmrk" path="res://Objects/TentUI.tscn" id="5_leduv"]
+[ext_resource type="PackedScene" uid="uid://b0gla27y8jy1j" path="res://settings.tscn" id="5_t6rtr"]
 [ext_resource type="PackedScene" uid="uid://blchhtcti1jek" path="res://Objects/Campfire.tscn" id="6_0icqi"]
+[ext_resource type="PackedScene" uid="uid://ci747wpsqx8m1" path="res://Objects/campfire_tp.tscn" id="7_4espp"]
 [ext_resource type="PackedScene" uid="uid://buvwpip4pcfdx" path="res://Objects/Target.tscn" id="7_4ldvj"]
 [ext_resource type="PackedScene" uid="uid://c0g5566vhyejp" path="res://Objects/target_tp.tscn" id="8_0qtk0"]
 [ext_resource type="PackedScene" uid="uid://ud78ce4v4axw" path="res://tooltip.tscn" id="9_ll0nv"]
@@ -19,12 +21,12 @@ ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 ground_curve = 0.422243
 
-[sub_resource type="Sky" id="Sky_18tdg"]
+[sub_resource type="Sky" id="Sky_vafjt"]
 sky_material = SubResource("ProceduralSkyMaterial_nnb03")
 
 [sub_resource type="Environment" id="Environment_be404"]
 background_mode = 1
-sky = SubResource("Sky_18tdg")
+sky = SubResource("Sky_vafjt")
 tonemap_mode = 2
 fog_light_color = Color(0, 0, 0, 1)
 
@@ -85,8 +87,10 @@ transform = Transform3D(-0.716497, 0, -0.69759, 0, 1, 0, 0.69759, 0, -0.716497, 
 
 [node name="Viewport2Din3D" parent="Tent" instance=ExtResource("4_olp4n")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 1.80446, 0.853132, 0.0921516)
-transparent = 2
+scene = ExtResource("5_t6rtr")
+viewport_size = Vector2(1150, 650)
 alpha_scissor_threshold = 1.0
+scene_properties_keys = PackedStringArray("settings.gd")
 
 [node name="Tooltip" parent="Tent/Viewport2Din3D" instance=ExtResource("9_ll0nv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138129, 0.879707, -0.343327)
@@ -108,6 +112,9 @@ omni_range = 3.886
 
 [node name="Viewport2Din3D" parent="Campfire" instance=ExtResource("4_olp4n")]
 transform = Transform3D(0.22534, 0, 0, 0, 0.307797, 0, 0, 0, 1, 0, 0.243373, 0)
+scene = ExtResource("7_4espp")
+transparent = 2
+alpha_scissor_threshold = 1.0
 
 [node name="Tooltip" parent="Campfire/Viewport2Din3D" instance=ExtResource("9_ll0nv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0807419, 0.995674, -0.0592467)

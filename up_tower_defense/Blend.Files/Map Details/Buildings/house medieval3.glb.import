@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dudqbhpj60pvx"
-path="res://.godot/imported/arrow.glb-1c65d2b22f41880c0e8e3b35eb867e22.scn"
+uid="uid://b1ip2oy5glnd2"
+path="res://.godot/imported/house medieval3.glb-b284537ca093843d8fb0ce3013b9a631.scn"
 
 [deps]
 
-source_file="res://Blend.Files/arrow.glb"
-dest_files=["res://.godot/imported/arrow.glb-1c65d2b22f41880c0e8e3b35eb867e22.scn"]
+source_file="res://Blend.Files/Map Details/Buildings/house medieval3.glb"
+dest_files=["res://.godot/imported/house medieval3.glb-b284537ca093843d8fb0ce3013b9a631.scn"]
 
 [params]
 

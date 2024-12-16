@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dl7foublonxh8"
+path="res://.godot/imported/church-bell-5993.mp3-aeffcf6f33f68f9ddcfd35a84e725f9e.mp3str"
+
+[deps]
+
+source_file="res://Blend.Files/Map Details/Buildings/church-bell-5993.mp3"
+dest_files=["res://.godot/imported/church-bell-5993.mp3-aeffcf6f33f68f9ddcfd35a84e725f9e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

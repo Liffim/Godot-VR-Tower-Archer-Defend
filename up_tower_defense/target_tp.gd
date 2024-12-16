@@ -16,4 +16,5 @@ func _on_button_pressed() -> void:
 	print("Button pressed, attempting to change scene.")
 	print("Button pressed, switching scenes...")
 	# Directly change the scene to your main scene
+	await create_tween().tween_property(CharacterGlobal.fade, "modulate", Color.BLACK, 1).set_ease(Tween.EASE_IN_OUT).finished
 	get_tree().change_scene_to_file("res://practice.tscn")

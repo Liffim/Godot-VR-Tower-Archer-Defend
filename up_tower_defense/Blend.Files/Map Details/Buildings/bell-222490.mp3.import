@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://lmhrj8dil8w4"
+path="res://.godot/imported/bell-222490.mp3-89be17fc8af5e907e0eead4d4ce88623.mp3str"
+
+[deps]
+
+source_file="res://Blend.Files/Map Details/Buildings/bell-222490.mp3"
+dest_files=["res://.godot/imported/bell-222490.mp3-89be17fc8af5e907e0eead4d4ce88623.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
