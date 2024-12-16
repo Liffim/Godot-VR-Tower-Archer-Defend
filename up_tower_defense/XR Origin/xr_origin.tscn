@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://hysp3fvhnhup"]
+[gd_scene load_steps=19 format=3 uid="uid://hysp3fvhnhup"]
 
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_fluor"]
 [ext_resource type="Script" path="res://XR Origin/char.gd" id="1_k8nrq"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_3xthk"]
+[ext_resource type="Texture2D" uid="uid://c6ls1vaugdil5" path="res://Blend.Files/Mountain_Mountains.png" id="2_623r0"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_eumah"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_36ohq"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_4vubp"]
@@ -41,6 +42,11 @@ script = ExtResource("1_k8nrq")
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 
 [node name="Node3D2" type="Node3D" parent="XRCamera3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.841179)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_623r0")
 
 [node name="Left Hand" type="XRController3D" parent="."]
 tracker = &"left_hand"

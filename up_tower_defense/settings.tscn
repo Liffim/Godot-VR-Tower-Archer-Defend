@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0gla27y8jy1j"]
+
+[ext_resource type="Script" path="res://settings.gd" id="1_m1ht1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uvfxl"]
+font_size = 72
+
+[node name="Target Moving" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m1ht1")
+
+[node name="Visibility" type="Control" parent="."]
+visible = false
+top_level = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Mode>" type="Button" parent="Visibility"]
+layout_mode = 0
+offset_left = 804.0
+offset_top = 123.0
+offset_right = 943.0
+offset_bottom = 262.0
+theme_override_font_sizes/font_size = 80
+text = ">"
+
+[node name="Mode<" type="Button" parent="Visibility"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 123.0
+offset_right = 343.0
+offset_bottom = 262.0
+theme_override_font_sizes/font_size = 80
+text = "<"
+
+[node name="Label" type="Label" parent="Visibility"]
+layout_mode = 0
+offset_left = 204.0
+offset_right = 942.0
+offset_bottom = 141.0
+text = "Turning mode"
+label_settings = SubResource("LabelSettings_uvfxl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModeLabel" type="Label" parent="Visibility/Label"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 122.0
+offset_right = 742.0
+offset_bottom = 263.0
+text = "Continuous"
+label_settings = SubResource("LabelSettings_uvfxl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Radius>" type="Button" parent="Visibility"]
+offset_left = 804.0
+offset_top = 440.0
+offset_right = 943.0
+offset_bottom = 579.0
+theme_override_font_sizes/font_size = 80
+text = ">"
+
+[node name="Radius<" type="Button" parent="Visibility"]
+offset_left = 204.0
+offset_top = 440.0
+offset_right = 343.0
+offset_bottom = 579.0
+theme_override_font_sizes/font_size = 80
+text = "<"
+
+[node name="Label2" type="Label" parent="Visibility"]
+offset_left = 204.0
+offset_top = 317.0
+offset_right = 942.0
+offset_bottom = 458.0
+text = "Turn radius"
+label_settings = SubResource("LabelSettings_uvfxl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RadiusLabel" type="Label" parent="Visibility/Label2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 122.0
+offset_right = 742.0
+offset_bottom = 263.0
+text = "15°"
+label_settings = SubResource("LabelSettings_uvfxl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 643.0
+mouse_filter = 1
+
+[connection signal="pressed" from="Visibility/Mode>" to="." method="_on_modeR_pressed"]
+[connection signal="pressed" from="Visibility/Mode<" to="." method="_on_modeL_pressed"]
+[connection signal="pressed" from="Visibility/Radius>" to="." method="_on_radiusR_pressed"]
+[connection signal="pressed" from="Visibility/Radius<" to="." method="_on_radiusL_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

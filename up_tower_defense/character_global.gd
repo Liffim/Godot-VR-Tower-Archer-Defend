@@ -11,3 +11,6 @@ var drawing_arrow : bool = false
 var holster : bool = false
 var holster_position : Vector3
 var holster_rotation : float
+var fade : Sprite3D
+var turn_mode = XRToolsMovementTurn.TurnMode.SMOOTH
+var turn_radius = 15.0

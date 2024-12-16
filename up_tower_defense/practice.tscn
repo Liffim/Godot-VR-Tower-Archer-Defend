@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://krnnqhlrsakq"]
+[gd_scene load_steps=27 format=3 uid="uid://krnnqhlrsakq"]
 
 [ext_resource type="Script" path="res://practice.gd" id="1_m2io1"]
 [ext_resource type="PackedScene" uid="uid://dkff6fme5d6yk" path="res://Blend.Files/Map/practise_background.glb" id="2_yw8yi"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c4ot6sdn0uwhf" path="res://Blend.Files/RandomObjects/Target_last.glb" id="5_kr55u"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_wggec"]
 [ext_resource type="PackedScene" uid="uid://c3ef22bh8ilv8" path="res://target_moving.tscn" id="7_86by0"]
-[ext_resource type="PackedScene" uid="uid://f7btj46o4pfm" path="res://tower temp.tscn" id="8_qo6m6"]
 [ext_resource type="PackedScene" uid="uid://bs4io82xciw20" path="res://bow.tscn" id="9_wy624"]
 [ext_resource type="PackedScene" uid="uid://dgu4illt0owet" path="res://torch.tscn" id="10_ghy0g"]
 [ext_resource type="PackedScene" uid="uid://dayendo1et5oh" path="res://Blend.Files/Map Details/Bush.glb" id="12_20rfy"]
@@ -114,9 +113,6 @@ target = NodePath("../Target")
 
 [node name="PickableObject2" parent="." instance=ExtResource("9_wy624")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.570762, 1.36276, 7.80888)
-
-[node name="towerBodyMesh" parent="." groups=["arrow_collision"] instance=ExtResource("8_qo6m6")]
-transform = Transform3D(0.359936, 0, 0, 0, 1, 0, 0, 0, 0.267638, -0.41933, -2.37059, 7.79527)
 
 [node name="Torch" parent="." instance=ExtResource("10_ghy0g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0552, 1.8999e-07, 10.3824)

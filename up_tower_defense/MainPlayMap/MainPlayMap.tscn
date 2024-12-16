@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://blwbu7p5b0kwc"]
+[gd_scene load_steps=31 format=3 uid="uid://blwbu7p5b0kwc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_5bor6"]
 [ext_resource type="PackedScene" uid="uid://dfj84l6l2jptm" path="res://Blend.Files/Map/GrassLand.glb" id="1_urkk6"]
@@ -22,8 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://dylpo0jrmuvch" path="res://Blend.Files/Map Details/Buildings/house medieval2.glb" id="18_i3vpb"]
 [ext_resource type="PackedScene" uid="uid://b1ip2oy5glnd2" path="res://Blend.Files/Map Details/Buildings/house medieval3.glb" id="19_nq0ep"]
 [ext_resource type="PackedScene" uid="uid://2obiswu4sxp1" path="res://Blend.Files/Map Details/Buildings/early tower finished_Applied.glb" id="22_1ib6w"]
-[ext_resource type="PackedScene" uid="uid://dgu4illt0owet" path="res://torch.tscn" id="23_3stns"]
 [ext_resource type="PackedScene" uid="uid://cshabh52oinv3" path="res://Blend.Files/Map Details/Buildings/bell tower.glb" id="24_mobbj"]
+[ext_resource type="Script" path="res://Blend.Files/Map Details/Buildings/bell_tower.gd" id="25_hiaa1"]
+[ext_resource type="AudioStream" uid="uid://lmhrj8dil8w4" path="res://Blend.Files/Map Details/Buildings/bell-222490.mp3" id="26_v60rm"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1baft"]
 
@@ -486,8 +487,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 2.30237, 27.5437)
 [node name="Ladder5" parent="." instance=ExtResource("13_e8kcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 0.317444, 27.5437)
 
-[node name="Torch" parent="." instance=ExtResource("23_3stns")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.851, 0.499999, 20.6289)
-
 [node name="bell tower" parent="." instance=ExtResource("24_mobbj")]
-transform = Transform3D(1, 0, 0, 0, 0.925, 0, 0, 0, 1, -26.2761, 0.500004, 16.8319)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 0.925, 0, -1, 0, -4.37114e-08, -26.7777, 0.500004, 20.6921)
+script = ExtResource("25_hiaa1")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="bell tower"]
+transform = Transform3D(1, 0, 0, 0, 1.08108, 0, 0, 0, 1, -0.0822659, 16.9557, 2.44877)
+stream = ExtResource("26_v60rm")

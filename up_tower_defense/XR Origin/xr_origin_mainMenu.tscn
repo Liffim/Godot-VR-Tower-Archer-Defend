@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cugsw6v6khpuk"]
+[gd_scene load_steps=12 format=3 uid="uid://cugsw6v6khpuk"]
 
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_4x34l"]
+[ext_resource type="Script" path="res://XR Origin/xr_origin_main_menu.gd" id="1_lt2b7"]
+[ext_resource type="Texture2D" uid="uid://c6ls1vaugdil5" path="res://Blend.Files/Mountain_Mountains.png" id="2_bgunf"]
 [ext_resource type="Script" path="res://XR Origin/ray_cast_3d_menu.gd" id="4_2cl77"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_cfrsq"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="6_kio7l"]
@@ -21,9 +23,15 @@ jump_velocity = 3.0
 bounciness = 0.0
 bounce_threshold = 1.0
 
-[node name="XROrigin3D" type="XROrigin3D"]
+[node name="XROrigin3D2" type="XROrigin3D"]
+script = ExtResource("1_lt2b7")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.841179)
+modulate = Color(0, 0, 0, 0)
+texture = ExtResource("2_bgunf")
 
 [node name="Left Hand" type="XRController3D" parent="."]
 tracker = &"left_hand"
@@ -34,9 +42,6 @@ tracker = &"left_hand"
 show_laser = 2
 laser_length = 1
 
-[node name="MovementTurn" parent="Left Hand" instance=ExtResource("7_kl0mr")]
-turn_mode = 2
-
 [node name="RayCast3D" type="RayCast3D" parent="Left Hand"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.00103033, 0)
 visible = false
@@ -44,6 +49,9 @@ collision_mask = 2097152
 hit_from_inside = true
 collide_with_areas = true
 script = ExtResource("4_2cl77")
+
+[node name="MovementDirect" parent="Left Hand" instance=ExtResource("6_kio7l")]
+strafe = true
 
 [node name="Right Hand" type="XRController3D" parent="."]
 tracker = &"right_hand"
@@ -62,8 +70,8 @@ hit_from_inside = true
 collide_with_areas = true
 script = ExtResource("4_2cl77")
 
-[node name="MovementDirect" parent="Right Hand" instance=ExtResource("6_kio7l")]
-strafe = true
+[node name="MovementTurn" parent="Right Hand" instance=ExtResource("7_kl0mr")]
+turn_mode = 1
 
 [node name="PlayerBody" parent="." instance=ExtResource("9_hbnt3")]
 physics = SubResource("Resource_bcdvg")

@@ -3,11 +3,15 @@ extends XROrigin3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	await get_tree().create_timer(1).timeout
+	create_tween().tween_property($XRCamera3D/Sprite3D, "modulate", Color.TRANSPARENT, 3).set_ease(Tween.EASE_IN)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$"Right Hand/MovementTurn".turn_mode = CharacterGlobal.turn_mode
+	#$"Right Hand/MovementTurn"._turn_step = CharacterGlobal.turn_radius
+	CharacterGlobal.fade = $XRCamera3D/Sprite3D
 	CharacterGlobal.holster_position = $Node3D/Holster.global_position
 	CharacterGlobal.holster_rotation = $XRCamera3D.rotation.y
 	if XRHelpers.get_right_controller(self).is_button_pressed("trigger") and not CharacterGlobal.drawing and not CharacterGlobal.arrow and right_hand_behind():

@@ -11,6 +11,7 @@ var spawned = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not spawned and CharacterGlobal.player_position.y >= 5:
+		$"../bell tower".start_belling()
 		spawned = true
 		await get_tree().create_timer(randi_range(5,12)*randi_range(1,3)).timeout
 		var enemy_scene = preload("res://enemy.tscn")
