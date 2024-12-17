@@ -19,4 +19,6 @@ func _on_viewport_2_din_3d_pointer_event(event: Variant) -> void:
 		make_visible()
 	if typedEvent.event_type == XRToolsPointerEvent.Type.EXITED:
 		make_invisible()
-	look_at($"../../../XROrigin3D".position)
+	var player = $"../../../XROrigin3D"
+	if player != null:
+		look_at($"../../../XROrigin3D".position)

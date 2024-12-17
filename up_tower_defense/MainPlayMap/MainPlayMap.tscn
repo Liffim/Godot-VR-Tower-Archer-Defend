@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://blwbu7p5b0kwc"]
+[gd_scene load_steps=36 format=3 uid="uid://blwbu7p5b0kwc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_5bor6"]
 [ext_resource type="PackedScene" uid="uid://dfj84l6l2jptm" path="res://Blend.Files/Map/GrassLand.glb" id="1_urkk6"]
@@ -24,8 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://2obiswu4sxp1" path="res://Blend.Files/Map Details/Buildings/early tower finished_Applied.glb" id="22_1ib6w"]
 [ext_resource type="PackedScene" uid="uid://cshabh52oinv3" path="res://Blend.Files/Map Details/Buildings/bell tower.glb" id="24_mobbj"]
 [ext_resource type="Script" path="res://Blend.Files/Map Details/Buildings/bell_tower.gd" id="25_hiaa1"]
+[ext_resource type="Script" path="res://MainPlayMap/bellhit.gd" id="26_44u68"]
 [ext_resource type="PackedScene" uid="uid://dgu4illt0owet" path="res://torch.tscn" id="26_rdur7"]
 [ext_resource type="AudioStream" uid="uid://lmhrj8dil8w4" path="res://Blend.Files/Map Details/Buildings/bell-222490.mp3" id="26_v60rm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cqort"]
+radius = 0.70488
+height = 3.39649
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1baft"]
 
@@ -71,11 +76,25 @@ fog_light_color = Color(0, 0, 0, 1)
 fog_sky_affect = 0.0
 volumetric_fog_density = 0.4075
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjvqg"]
+size = Vector3(10.8086, 5.21289, 11.2344)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ek7jf"]
+size = Vector3(1.95679, 2.68945, 2.41577)
+
 [node name="MainPlayMap" type="Node3D"]
 script = ExtResource("1_5bor6")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [node name="XROrigin3D" parent="." instance=ExtResource("2_otck3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3001, 0)
+
+[node name="Area3D" type="Area3D" parent="XROrigin3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/Area3D"]
+shape = SubResource("CapsuleShape3D_cqort")
 
 [node name="MainMapObjects" type="Node" parent="." groups=["arrow_collision"]]
 
@@ -425,39 +444,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4368, 0.500002, 30.5907)
 [node name="house medieval5" parent="MapObjects/Houses" instance=ExtResource("18_i3vpb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.0528, 0.500002, 13.0923)
 
-[node name="SpawnPoint" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0861, 1.5, 6.81629)
-
-[node name="SpawnPoint2" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6021, 1.5, 50.2093)
-
-[node name="SpawnPoint3" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7513, 1.5, 10.4716)
-
-[node name="SpawnPoint5" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1489, 1.5, -6.31078)
-
-[node name="SpawnPoint6" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8867, 1.5, 25.3309)
-
-[node name="SpawnPoint7" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7933, 1.5, 66.2569)
-
-[node name="SpawnPoint8" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.4266, 1.5, 23.9282)
-
-[node name="SpawnPoint9" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3204, 1.5, 61.6409)
-
-[node name="SpawnPoint10" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0227, 1.5, -3.46522)
-
-[node name="SpawnPoint11" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4901, 1.5, 31.1906)
-
-[node name="SpawnPoint4" parent="." instance=ExtResource("17_13gvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4831, 1.5, 48.4754)
-
 [node name="PickableObject3" parent="." instance=ExtResource("17_f0wtn")]
 transform = Transform3D(-0.105049, 0, 0.994467, 0, 1, 0, -0.994467, 0, -0.105049, -1.36, 2.873, -1.273)
 gravity_scale = 0.0
@@ -465,7 +451,7 @@ gravity_scale = 0.0
 [node name="Tower" type="Node3D" parent="."]
 
 [node name="TowerModel" parent="Tower" instance=ExtResource("22_1ib6w")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.3472, -6.97094, 31.8384)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.3472, -6.97094, 31.8384)
 
 [node name="Ladder2" parent="Tower" instance=ExtResource("13_e8kcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 12.0644, 27.5437)
@@ -475,6 +461,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 10.0757, 27.5437)
 
 [node name="Ladder4" parent="Tower" instance=ExtResource("13_e8kcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 8.13325, 27.5437)
+
+[node name="Area3D" type="Area3D" parent="Tower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23462, 0, 32.5533)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tower/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133887, 1.17065, -0.595917)
+shape = SubResource("BoxShape3D_cjvqg")
 
 [node name="Ladder2" parent="." instance=ExtResource("13_e8kcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 6.17026, 27.5437)
@@ -492,9 +485,64 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44557, 0.317444, 27.5437)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 0.925, 0, -1, 0, -4.37114e-08, -26.7777, 0.500004, 20.6921)
 script = ExtResource("25_hiaa1")
 
+[node name="WaveTimer" type="Timer" parent="bell tower"]
+wait_time = 45.0
+autostart = true
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="bell tower"]
 transform = Transform3D(1, 0, 0, 0, 1.08108, 0, 0, 0, 1, -0.0822659, 16.9557, 2.44877)
 stream = ExtResource("26_v60rm")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="bell tower" groups=["arrow_collision"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.0548, 2.47258)
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource("26_44u68")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bell tower/StaticBody3D" groups=["arrow_collision"]]
+transform = Transform3D(1, 0, -6.53699e-13, 0, 1, 0, 6.53699e-13, 0, 1, 0, 1.05636, 0)
+shape = SubResource("BoxShape3D_ek7jf")
+
 [node name="Torch" parent="." instance=ExtResource("26_rdur7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90491, 15.0324, 28.9384)
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.239179, 15.1672, 0.207855, -36.3069)
+
+[node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0861, 0.5, 6.81629)
+
+[node name="SpawnPoint2" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6021, 0.5, 50.2093)
+
+[node name="SpawnPoint3" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7513, 0.5, 10.4716)
+
+[node name="SpawnPoint5" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1489, 0.5, -6.31078)
+
+[node name="SpawnPoint6" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8867, 0.5, 25.3309)
+
+[node name="SpawnPoint7" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7933, 0.5, 66.2569)
+
+[node name="SpawnPoint8" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.4266, 0.5, 23.9282)
+
+[node name="SpawnPoint9" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3204, 0.5, 61.6409)
+
+[node name="SpawnPoint10" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0227, 0.5, -3.46522)
+
+[node name="SpawnPoint11" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4901, 0.5, 31.1906)
+
+[node name="SpawnPoint4" parent="SpawnPoints" instance=ExtResource("17_13gvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4831, 0.5, 48.4754)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="XROrigin3D/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Tower/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="bell tower/WaveTimer" to="bell tower" method="_on_wave_timer_timeout"]

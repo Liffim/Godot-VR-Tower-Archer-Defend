@@ -8,9 +8,9 @@ var health = 20
 var material : Material
 
 func _ready() -> void:
-	mesh = $Slime/Sphere
-	var anim_play : AnimationPlayer = $Slime/AnimationPlayer
-	anim_play.play("SphereAction")
+	mesh = $"Red Ruby/Icosphere"
+	var anim_play : AnimationPlayer = $"Red Ruby/AnimationPlayer"
+	anim_play.play("IcosphereAction")
 	material = mesh.mesh.surface_get_material(0).duplicate()
 	mesh.set_surface_override_material(0, material)
 
@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	velocity = (get_parent().position + position).direction_to(CharacterGlobal.player_position) * speed
-	velocity.y = -1
 	move_and_slide()
 
 func hit_calc(position:Vector3):

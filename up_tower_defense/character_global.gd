@@ -14,3 +14,7 @@ var holster_rotation : float
 var fade : Sprite3D
 var turn_mode = XRToolsMovementTurn.TurnMode.SMOOTH
 var turn_radius = 15.0
+var total_shots = 0
+var hit_shots = 0
+var kills = 0
+var time = 0

@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdf2opug0rcl5"]
+[gd_scene load_steps=25 format=3 uid="uid://bdf2opug0rcl5"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_rj86y"]
+[ext_resource type="Script" path="res://end_scene.gd" id="1_xfx41"]
 [ext_resource type="PackedScene" uid="uid://do2tp57xyv6tx" path="res://Blend.Files/Map Details/DeadTree.glb" id="3_pvhwu"]
 [ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="4_xud1b"]
 [ext_resource type="PackedScene" uid="uid://re0lowcgdwel" path="res://Blend.Files/RandomObjects/rope.glb" id="5_24dfe"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b5moq3vwfcmrk" path="res://Objects/TentUI.tscn" id="7_s0uwv"]
 [ext_resource type="PackedScene" uid="uid://ud78ce4v4axw" path="res://tooltip.tscn" id="8_b5j6j"]
 [ext_resource type="PackedScene" uid="uid://dqgp8ijy622yi" path="res://XR Origin/xr_origin_endMenu.tscn" id="8_oqmke"]
+[ext_resource type="PackedScene" uid="uid://ce7ewte2ijs7r" path="res://play_again.tscn" id="9_k21e8"]
+[ext_resource type="PackedScene" uid="uid://dmt5q5l18xpha" path="res://to_main.tscn" id="10_54oxw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ybec"]
 size = Vector3(1, 0.135742, 1)
@@ -79,7 +81,7 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_nq8oi")
 
 [node name="EndScene" type="Node3D"]
-script = ExtResource("1_rj86y")
+script = ExtResource("1_xfx41")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.363728, 0)
@@ -89,7 +91,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.896206, 0)
 shape = SubResource("BoxShape3D_5ybec")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 0.13, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1.66077, 0, 0, 0, 0.130357, 0, 0, 0, 2.23931, 0, 0, 0)
 mesh = SubResource("BoxMesh_n2lqf")
 skeleton = NodePath("../..")
 
@@ -160,5 +162,35 @@ top_level = true
 text = "Exit"
 
 [node name="XROrigin3D2" parent="." instance=ExtResource("8_oqmke")]
+
+[node name="Time" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.712)
+text = "Time survived: "
+
+[node name="Kills" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -1.712)
+text = "Kills: "
+
+[node name="Accuracy" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1.712)
+text = "Accuracy: "
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("6_otsqq")]
+transform = Transform3D(0.825638, -0.214823, 0.521702, 0.0179078, 0.934187, 0.356333, -0.563915, -0.28486, 0.775148, 0.0406993, 0.0340695, -1.56849)
+scene = ExtResource("9_k21e8")
+viewport_size = Vector2(600, 400)
+transparent = 2
+alpha_scissor_threshold = 0.679
+unshaded = true
+scene_properties_keys = PackedStringArray("play_again.gd")
+
+[node name="Viewport2Din3D2" parent="." instance=ExtResource("6_otsqq")]
+transform = Transform3D(0.866518, 0.163487, -0.471613, 0.0179344, 0.934032, 0.356738, 0.498824, -0.317578, 0.806423, 1.71314, 0.0340695, -0.536744)
+scene = ExtResource("10_54oxw")
+viewport_size = Vector2(600, 400)
+transparent = 2
+alpha_scissor_threshold = 0.624
+unshaded = true
+scene_properties_keys = PackedStringArray("play_again.gd")
 
 [connection signal="pointer_event" from="Exit/Viewport2Din3D" to="Exit/Viewport2Din3D/Tooltip" method="_on_viewport_2_din_3d_pointer_event"]

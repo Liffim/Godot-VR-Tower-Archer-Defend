@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://c481nt5ytnk1y"]
+[gd_scene load_steps=14 format=3 uid="uid://lideopebrehx"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_3e3v1"]
-[ext_resource type="PackedScene" uid="uid://df76grxvioddi" path="res://Blend.Files/Enemies/Slime.glb" id="2_ratfb"]
-[ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="3_pl8u3"]
+[ext_resource type="Script" path="res://enemy_flying.gd" id="1_sa4ov"]
+[ext_resource type="PackedScene" uid="uid://cfuquggq3r45p" path="res://Blend.Files/Enemies/Red Ruby.glb" id="3_au0qg"]
+[ext_resource type="Texture2D" uid="uid://j6mk3kp7q50i" path="res://particles/particle_sprite_smoke.webp" id="3_brlv7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xfulk"]
-size = Vector3(0.59082, 0.611328, 0.560547)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5pj5i"]
+radius = 0.408232
+height = 1.4224
 
 [sub_resource type="Curve" id="Curve_pbc4b"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.108696, 1), 0.0, 0.0, 0, 0, Vector2(0.347826, 1), 0.0, 0.0, 0, 0, Vector2(0.355072, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -48,7 +49,7 @@ anim_speed_max = 1.0
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_pl8u3")
+albedo_texture = ExtResource("3_brlv7")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 8
@@ -61,13 +62,11 @@ material = SubResource("StandardMaterial3D_nq8oi")
 [node name="Enemy" type="CharacterBody3D" groups=["arrow_collision"]]
 collision_layer = 1025
 collision_mask = 1025
-script = ExtResource("1_3e3v1")
+script = ExtResource("1_sa4ov")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312003, 0)
-shape = SubResource("BoxShape3D_xfulk")
-
-[node name="Slime" parent="." instance=ExtResource("2_ratfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28984, -0.00888062)
+shape = SubResource("CapsuleShape3D_5pj5i")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -80,5 +79,8 @@ speed_scale = 0.5
 visibility_aabb = AABB(-0.1, 0.5, -0.085, 0.24, 0.5, 0.2)
 process_material = SubResource("ParticleProcessMaterial_mcmra")
 draw_pass_1 = SubResource("QuadMesh_yi2tc")
+
+[node name="Red Ruby" parent="." instance=ExtResource("3_au0qg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

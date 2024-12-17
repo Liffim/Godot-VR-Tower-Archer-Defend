@@ -3,8 +3,13 @@ extends RigidBody3D
 var is_flying = false
 @onready var timer = $Timer
 
+var shot_count = false
+
 func _physics_process(delta: float) -> void:
 	if is_flying:
+		if not shot_count:
+			shot_count = true
+			CharacterGlobal.total_shots+=1
 		if timer.is_stopped():
 			timer.start()
 		var direction = position + linear_velocity
@@ -31,6 +36,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		remove_child($CollisionShape3D)
 		if body.has_method("hit_calc"):
 			body.hit_calc($Area3D.global_position)
+			if $GPUParticles3D.visible and body.has_method("set_on_fire"):
+				body.set_on_fire()
+		if body.has_method("bell"):
+			body.bell()
 
 
 func _on_timer_timeout() -> void:

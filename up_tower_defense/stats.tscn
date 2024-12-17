@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://x003ogvk37k6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_31mmo"]
+font_size = 50
+outline_size = 2
+outline_color = Color(0.817521, 0.817521, 0.817521, 1)
+
+[node name="Stats" type="Control"]
+layout_mode = 3
+anchor_right = 0.521
+anchor_bottom = 0.463
+offset_right = -0.192017
+offset_bottom = -0.0240173
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -291.0
+offset_right = 291.0
+offset_bottom = 106.0
+grow_horizontal = 2
+text = "Time survived:"
+label_settings = SubResource("LabelSettings_31mmo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Kills" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = -53.0
+offset_right = 291.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemies killed:"
+label_settings = SubResource("LabelSettings_31mmo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Accuracy" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -291.0
+offset_top = -106.0
+offset_right = 291.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Accuracy:"
+label_settings = SubResource("LabelSettings_31mmo")
+horizontal_alignment = 1
+vertical_alignment = 1
